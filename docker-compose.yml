@@ -1,0 +1,29 @@
+version: "3.7"
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        IS_LOCAL: "true"
+    volumes:
+      - .:/var/www/html
+    environment:
+      IS_LOCAL: "true"
+      MAX_EXECUTION_TIME: 300
+      PHP_MEMORY_LIMIT: "240M"
+      APP_DEBUG: ${APP_DEBUG:-true}
+      DB_DATABASE: ${DB_DATABASE:-app_db}
+      DB_HOST: ${DB_HOST:-dbdev.bsi.io}
+      DB_PORT: ${DB_PORT:-6033}
+      DB_USERNAME: ${DB_USERNAME:-dev}
+      DB_PASSWORD: ${DB_PASSWORD:-bismillah}
+    ports:
+      - "${WEB_HOST_PORT:-8000}:80"
+    networks:
+      - default
+#      - svc-some-service-lumen_default
+
+networks:
+#  svc-some-service-lumen_default:
+#    external: true

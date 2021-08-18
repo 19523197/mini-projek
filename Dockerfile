@@ -1,6 +1,6 @@
 FROM asia.gcr.io/uii-cloud-project/interoperability/os/php-server:lumen8-2
 
-LABEL maintainer="Nabil Muhammad Firdaus <nabil.firdaus@uii.ac.id>"
+LABEL maintainer="Nabil Muhammad Firdaus <211232629@uii.ac.id>"
 
 ARG IS_LOCAL="false"
 ENV IS_LOCAL=$IS_LOCAL
@@ -21,11 +21,10 @@ COPY docker/entrypoint.sh /root/entrypoint.sh
 #COPY .env.prod /var/www/html/
 
 RUN chmod +x /root/setup.sh \
-#    && chmod +x /root/env.sh \
-#    && chmod +x /root/build-conf.sh \
-#    && chmod +x /root/entrypoint.sh \
+    && chmod +x /root/build-conf.sh \
+    && chmod +x /root/entrypoint.sh \
     && /root/setup.sh
 
 RUN chown -R nobody.www-data /var/www/html/
 
-#ENTRYPOINT ["/root/entrypoint.sh"]
+ENTRYPOINT ["/root/entrypoint.sh"]
