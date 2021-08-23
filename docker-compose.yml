@@ -24,6 +24,6 @@ services:
       - default
 #      - svc-some-service-lumen_default
 
-networks:
+#networks:
 #  svc-some-service-lumen_default:
 #    external: true
