@@ -1,7 +1,7 @@
 stages:
   - analysis
-#  - build
-#  - deploy
+  - build
+  - deploy
 
 variables:
   # Docker image building for GCR
@@ -35,7 +35,7 @@ sonarqube_scan:
   tags:
     - untag
 
-build_development:
+.build_development:
   stage: build
   image: gcr.io/kaniko-project/executor:debug
   script:
@@ -52,7 +52,7 @@ build_development:
   tags:
     - build
 
-deploy_development:
+.deploy_development:
   stage: deploy
   variables:
     GIT_STRATEGY: none
@@ -69,7 +69,7 @@ deploy_development:
   tags:
     - deploy
 
-build_staging:
+.build_staging:
   stage: build
   image: gcr.io/kaniko-project/executor:debug
   script:
@@ -86,7 +86,7 @@ build_staging:
   tags:
     - build
 
-deploy_staging:
+.deploy_staging:
   stage: deploy
   variables:
     GIT_STRATEGY: none
@@ -103,7 +103,7 @@ deploy_staging:
   tags:
     - deploy
 
-build_production:
+.build_production:
   stage: build
   image: gcr.io/kaniko-project/executor:debug
   script:
@@ -120,7 +120,7 @@ build_production:
   tags:
     - build
 
-deploy_production:
+.deploy_production:
   stage: deploy
   variables:
     GIT_STRATEGY: none
