@@ -1,4 +1,4 @@
-version: "3.7"
+version: "3.9"
 services:
   app:
     build:
@@ -10,11 +10,6 @@ services:
       - .:/var/www/html
     environment:
       IS_LOCAL: "true"
-      APP_DEBUG: ${APP_DEBUG:-true}
-      DB_HOST: ${DB_HOST:-dbdev.bsi.io}
-      DB_PORT: ${DB_PORT:-6033}
-      DB_USERNAME: ${DB_USERNAME:-dev}
-      DB_PASSWORD: ${DB_PASSWORD:-bismillah}
     ports:
       - "${WEB_HOST_PORT:-8000}:80"
     networks:
