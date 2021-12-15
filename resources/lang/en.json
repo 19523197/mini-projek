@@ -1,0 +1,7 @@
+{
+    "http_401": "Unauthenticated.",
+    "http_403": "You don't have permission to perform this action!",
+    "http_404": "Endpoint not found or wrong HTTP method.",
+    "http_422": "The given data was invalid.",
+    "http_500": "Something went wrong on the server."
+}
