@@ -40,6 +40,8 @@ spec:
           env:
             - name: APP_DEBUG
               value: "false"
+            - name: APP_ENV
+              value: "production"
             - name: DB_HOST
               value: "dbproduction.bsi.io"
             - name: DB_PORT

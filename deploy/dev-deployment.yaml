@@ -40,6 +40,8 @@ spec:
           env:
             - name: APP_DEBUG
               value: "true"
+            - name: APP_ENV
+              value: "local"
             - name: DB_HOST
               value: "dbdev.bsi.io"
             - name: DB_PORT

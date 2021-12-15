@@ -40,6 +40,8 @@ spec:
           env:
             - name: APP_DEBUG
               value: "false"
+            - name: APP_ENV
+              value: "staging"
             - name: DB_HOST
               value: "dbstaging.bsi.io"
             - name: DB_PORT
