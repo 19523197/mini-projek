@@ -24,13 +24,6 @@ class ExampleController extends Controller
 
     public function __invoke(ExampleFormRequest $request)
     {
-        // choose one implementation.
-        // via FormRequest (ExampleFormRequest) or via $this->validate(), but not both.
-        $this->validate($request, [
-            'example_field1' => ['required', 'integer', new ExampleRule()],
-            'example_field2' => ['required', 'json'],
-        ]);
-
         $examples = ExampleModel::query()
             ->onlyActive()
 //            ->with(['organisasi' => function (Relation $query) {
