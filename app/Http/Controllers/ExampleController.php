@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ExampleFormRequest;
-use App\Http\Resources\BazaarClass\BazaarClassResource;
 use App\Http\Resources\ExampleResource;
 use App\Models\ExampleModel;
 use App\Models\Organisasi;
