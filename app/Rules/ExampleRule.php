@@ -18,6 +18,6 @@ class ExampleRule implements Rule
 
     public function message()
     {
-        return __('Example invalid rule message.');
+        return __('Contoh pesan kesalahan.');
     }
 }

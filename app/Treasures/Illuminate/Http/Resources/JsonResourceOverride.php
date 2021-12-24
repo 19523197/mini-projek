@@ -50,14 +50,16 @@ trait JsonResourceOverride
     {
         $relationship = $this->formatRelationship($data, $relationship);
 
-        return (method_exists($data, 'relationLoaded') &&
+        return (is_object($data) && method_exists($data, 'relationLoaded') &&
                 $data->relationLoaded($relationship)) ||
             (is_array($data) && Arr::has($data, $relationship));
     }
 
     protected function formatRelationship($data, $relationship)
     {
-        return method_exists($data, 'relationLoaded') && method_exists($data, 'getRelation')
+        return (is_object($data) &&
+            method_exists($data, 'relationLoaded') &&
+            method_exists($data, 'getRelation'))
             ? $relationship
             : Str::snake($relationship);
     }

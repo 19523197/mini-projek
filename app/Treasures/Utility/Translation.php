@@ -2,18 +2,20 @@
 
 namespace App\Treasures\Utility;
 
-use Exception;
+use Throwable;
 use Illuminate\Support\Str;
 
 class Translation
 {
     public static function transEntity(string $entity)
     {
-        try {
+        if (class_exists($entity)) {
             // try to get the class name if it's a class
-            $entity = Str::snake(class_basename(new $entity));
-        } catch (Exception $e) {
-            //
+            try {
+                $entity = Str::snake(class_basename(new $entity));
+            } catch (Throwable $e) {
+                //
+            }
         }
 
         $entity = Str::lower(str_replace('_', ' ', $entity));

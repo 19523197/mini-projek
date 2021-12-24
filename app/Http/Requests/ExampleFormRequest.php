@@ -14,8 +14,9 @@ class ExampleFormRequest extends FormRequest
     protected function rules(): array
     {
         return [
-            'example_field1' => ['required', 'integer', new ExampleRule()],
-            'example_field2' => ['required', 'json'],
+            'id_organisasi' => ['required'],
+            'example_field1' => ['integer', new ExampleRule()],
+            'example_field2' => ['json'],
         ];
     }
 }

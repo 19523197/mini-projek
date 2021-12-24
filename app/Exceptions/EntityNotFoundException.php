@@ -16,7 +16,7 @@ class EntityNotFoundException extends RuntimeException
      */
     public function __construct(string $entity)
     {
-        parent::__construct(Str::ucfirst(__(':entity is not found.', [
+        parent::__construct(Str::ucfirst(__(':entity tidak ditemukan.', [
             'entity' => Translation::transEntity($entity),
         ])));
     }

@@ -2,16 +2,18 @@
 
 namespace App\Models;
 
+use App\Treasures\Database\HasRelationships;
 use App\Treasures\Illuminate\Activable;
 use App\Treasures\Illuminate\SoftDeletes;
 use Illuminate\Database\Eloquent\Model;
 
-class ExampleModel extends Model
+class ContohModel extends Model
 {
     use Activable,
-        SoftDeletes;
+        SoftDeletes,
+        HasRelationships;
 
-    protected $table = 'example';
+    protected $table = 'contoh';
 
     protected $guarded = [];
 
@@ -22,16 +24,17 @@ class ExampleModel extends Model
     const UPDATED_AT = 'tgl_update';
 
     protected $casts = [
-        'id' => 'string', // required when db type is BIGINT
+        'id' => 'string', // required when column type is BIGINT,
+        'id_organisasi' => 'string',
     ];
 
     protected $appends = [
-        'example_accessor',
+        'contoh_aksesor',
     ];
 
-    public function getExampleAccessorAttribute($value)
+    public function getContohAksesorAttribute($value)
     {
-        return 'example';
+        return 'contoh';
     }
 
     public function organisasi()

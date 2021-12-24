@@ -27,7 +27,7 @@ class HeaderMiddleware
                 'x-menu' => 'required',
             ],
             [
-                'required' => __('The :attribute header is required.'),
+                'required' => __('Header :attribute wajib diisi.'),
             ]
         )->validate();
 

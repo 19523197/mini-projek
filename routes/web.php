@@ -18,18 +18,25 @@ $router->get('/healthz', function () {
 });
 
 $router->group([
-    'prefix' => 'public/api/v1',
-    'middleware' => ['header']
+    'prefix' => '/public/api/v1',
+    'namespace' => 'v1',
+    'middleware' => ['header'],
 ], function () use ($router) {
     $router->get('/example', 'ExampleController');
-    $router->get('/another-example', 'AnotherExampleController');
+    $router->post('/another-example', 'AnotherExampleController');
+    $router->get('/another-second-example', 'AnotherSecondExampleController@index');
+    $router->put('/another-second-example/{uuid}', 'AnotherSecondExampleController@update');
+    $router->delete('/another-second-example/{uuid}', 'AnotherSecondExampleController@destroy');
 });
 
-$router->group(['prefix' => '/private/api/v1'], function () use ($router) {
-    //
+$router->group([
+    'prefix' => '/private/api/v1',
+    'namespace' => 'Private\v1',
+], function () use ($router) {
+    $router->get('/example', 'ExamplePrivateApiController');
 });
 
-$router->get('public/api/v1', function () use ($router) {
+$router->get('/public/api/v1', function () use ($router) {
     return response()->json([
         'info' => 'Welcome to Microservice Boilerplate',
     ]);
