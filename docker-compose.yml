@@ -13,9 +13,11 @@ services:
     ports:
       - "${WEB_HOST_PORT:-8000}:80"
     networks:
-      - default
-#      - svc-some-service-lumen_default
+      default:
+        aliases:
+          - "svc-academic-boilerplate-lumen.local"
+#      svc-some-app-lumen_default:
 
 #networks:
-#  svc-some-service-lumen_default:
+#  svc-some-app-lumen_default:
 #    external: true
