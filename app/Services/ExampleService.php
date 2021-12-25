@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Exceptions\EntityNotFoundException;
 use App\Repositories\Contracts\ExampleRepositoryContract;
+use Illuminate\Support\Facades\DB;
 
 class ExampleService
 {
@@ -16,28 +17,34 @@ class ExampleService
 
     public function create(array $data): array
     {
-        return $this->repository->add($data);
+        return DB::transaction(function () use ($data) {
+            return $this->repository->add($data);
+        });
     }
 
     public function update(string $uuid, array $data): array
     {
-        $example = $this->repository->findByUuid($uuid);
+        return DB::transaction(function () use ($uuid, $data) {
+            $example = $this->repository->findByUuid($uuid);
 
-        if (is_null($example)) {
-            throw new EntityNotFoundException('contoh');
-        }
+            if (is_null($example)) {
+                throw new EntityNotFoundException('contoh');
+            }
 
-        return $this->repository->add($data, $example);
+            return $this->repository->add($data, $example);
+        });
     }
 
     public function destroy(string $uuid): void
     {
-        $example = $this->repository->findByUuid($uuid);
+        DB::transaction(function () use ($uuid) {
+            $example = $this->repository->findByUuid($uuid);
 
-        if (is_null($example)) {
-            throw new EntityNotFoundException('contoh');
-        }
+            if (is_null($example)) {
+                throw new EntityNotFoundException('contoh');
+            }
 
-        $this->repository->remove($example);
+            $this->repository->remove($example);
+        });
     }
 }
