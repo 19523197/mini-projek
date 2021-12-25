@@ -91,6 +91,7 @@ metadata:
       service: svc-academic-boilerplate-lumen.academic-dev
       timeout_ms: 180000
 spec:
+  type: NodePort
   selector:
     svc: svc-academic-boilerplate-lumen
     tier: backend
