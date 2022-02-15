@@ -10,15 +10,15 @@ class MVPGeneratorCommand extends Command
 {
     protected $signature = 'generate:mvp';
     protected $description = 'Generate new MVP feature';
-    protected $file, $teamName, $appName, $folderFileName, $stubsToCreate, $nameSpacesToCreate, $lastPrefixToCreate;
+    protected $file, $teamName, $appName, $folderFileName, $directoryPath, $stubsToCreate, $nameSpacesToCreate, $lastPrefixToCreate;
     private static $lastPrefixWantsToCreate = [
         'Controller',
     ];
     private static $directoriesPath = [
-        'Controller' => 'app/Https/Controller',
+        'Controller' => 'app/Http/Controllers',
     ];
     private static $nameSpacesPath = [
-        'Controller' => 'App\Http\Controller',
+        'Controller' => 'App\Http\Controllers',
     ];
     private static $stubsPath = [
         'Controller' => __DIR__ . '/../../../stubs/controller.stub',
@@ -36,7 +36,7 @@ class MVPGeneratorCommand extends Command
         $continue = $this->confirm('This will processed your request to create new MVP. Do you want to continue?');
 
         if ($continue) {
-            $this->teamName = $this->ask('What your team name?');
+            $this->teamName = strtolower($this->ask('What your team name?'));
             $this->appName = $this->ask('What application name do you want to create?');
             $this->folderFileName = $this->ask('What file and folder name do you want to create?');
 
@@ -49,7 +49,7 @@ class MVPGeneratorCommand extends Command
                 $this->lastPrefixToCreate = $toCreate;
                 $this->stubsToCreate = $this->getStubsToCreate($toCreate);
                 $this->nameSpacesToCreate = $this->getNameSpaceToCreate($toCreate);
-                $this->directoriesPath = $this->getDirectoryPathToCreate($toCreate);
+                $this->directoryPath = $this->getDirectoryPathToCreate($toCreate);
 
                 $directory = $this->getSourceFilePath();
 
@@ -107,7 +107,7 @@ class MVPGeneratorCommand extends Command
      */
     private function getNameSpaceToCreate($nameSpacePath)
     {
-        return static::$nameSpacesPath[$nameSpacePath];
+        return static::$nameSpacesPath[$nameSpacePath].'\\'.$this->folderFileName;
     }
 
     /**
@@ -118,7 +118,7 @@ class MVPGeneratorCommand extends Command
      */
     public function getSourceFilePath()
     {
-        return base_path($this->directoriesPath).'/'.$this->getSingularClassName($this->folderFileName).''.$this->lastPrefixToCreate.'.php';
+        return base_path($this->directoryPath).'/'.$this->folderFileName.'/'.$this->getSingularClassName($this->folderFileName).''.$this->lastPrefixToCreate.'.php';
     }
 
     /**
@@ -151,7 +151,7 @@ class MVPGeneratorCommand extends Command
     private function getStubVariables()
     {
         return [
-            strtolower('NAMESPACE') => $$this->nameSpacesToCreate,
+            strtolower('NAMESPACE') => $this->nameSpacesToCreate,
             strtolower('CLASS') => $this->getSingularClassName($this->folderFileName),
         ];
     }
