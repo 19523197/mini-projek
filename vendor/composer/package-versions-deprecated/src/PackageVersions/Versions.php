@@ -75,6 +75,7 @@ final class Versions
   'illuminate/view' => 'v8.76.1@fa6921f75f357bccddca7f7d094a056db6426416',
   'laravel/lumen-framework' => 'v8.3.3@633876f2c092b7bfab5ac4275b2af801dc373392',
   'laravel/serializable-closure' => 'v1.0.5@25de3be1bca1b17d52ff0dc02b646c667ac7266c',
+  'laravelista/lumen-vendor-publish' => '8.0.0@0ca682e0d236f8b085e6ac2cf33912ddb4702f52',
   'league/flysystem' => '1.1.9@094defdb4a7001845300334e7c1ee2335925ef99',
   'league/flysystem-aws-s3-v3' => '1.0.29@4e25cc0582a36a786c31115e419c6e40498f6972',
   'league/mime-type-detection' => '1.9.0@aa70e813a6ad3d1558fc927863d47309b4c23e69',
@@ -180,7 +181,7 @@ final class Versions
   'seld/phar-utils' => '1.2.0@9f3452c93ff423469c0d56450431562ca423dcee',
   'symfony/filesystem' => 'v6.0.0@52b3c9cce673b014915445a432339f282e002ce6',
   'theseer/tokenizer' => '1.2.1@34a41e998c2183e22995f158c581e7b5e755ab9e',
-  'laravel/lumen' => '1.0.0+no-version-set@',
+  'laravel/lumen' => 'dev-develop@274dbcc7599e057875181774d38b2a16ac9b8336',
 );
 
     private function __construct()
