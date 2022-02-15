@@ -61,19 +61,27 @@ class MVPGeneratorCommand extends Command
                     $this->files->put($directory, $contents);
                     $directoryCreated[] = $directory;
                     $this->output->progressAdvance();
-                    $this->info("File : {$directory} created");
                 } else {
-                    $this->info("File : {$directory} already exits");
                     $this->output->progressFinish();
+                    $this->alert("File already exist detected");
+                    $this->warn("File: {$directory}");
 
                     $hasFailedOperation = true;
 
-                    $this->warn('Aborting the operation....');
-                    $this->output->progressStart(count($directoryCreated));
-                    foreach ($directoryCreated as $directory) {
-                        $this->files->delete($directory);
+                    $this->warn("");
+                    $this->warn('Aborting this operation....');
+
+                    if (count($directoryCreated) > 0) {
+                        $this->output->progressStart(count($directoryCreated));
+                        foreach ($directoryCreated as $directory) {
+                            $this->files->delete($directory);
+                            $this->output->progressAdvance();
+                        }
+                    } else {
+                        $this->output->progressStart(1);
                         $this->output->progressAdvance();
                     }
+
                     $this->output->progressFinish();
                     break;
                 }
