@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInitdc8b9303ef4eb9cc7b14856988fc4fbd
+class ComposerStaticInita2575f02b60fc03593d28364634cf7c3
 {
     public static $files = array (
         'a4a119a56e50fbb293281d9a48007e0e' => __DIR__ . '/..' . '/symfony/polyfill-php80/bootstrap.php',
@@ -90,7 +90,6 @@ class ComposerStaticInitdc8b9303ef4eb9cc7b14856988fc4fbd
             'Symfony\\Component\\ErrorHandler\\' => 31,
             'Symfony\\Component\\Console\\' => 26,
             'Staudenmeir\\EloquentHasManyDeep\\' => 32,
-            'Staudenmeir\\EloquentEagerLimit\\' => 31,
         ),
         'R' => 
         array (
@@ -119,7 +118,6 @@ class ComposerStaticInitdc8b9303ef4eb9cc7b14856988fc4fbd
         'M' => 
         array (
             'MyCLabs\\Enum\\' => 13,
-            'Mpyw\\ComposhipsEagerLimit\\' => 26,
             'Monolog\\' => 8,
             'Matrix\\' => 7,
             'Maatwebsite\\Excel\\' => 18,
@@ -212,7 +210,6 @@ class ComposerStaticInitdc8b9303ef4eb9cc7b14856988fc4fbd
         'A' => 
         array (
             'Aws\\' => 4,
-            'Awobaz\\Compoships\\' => 18,
             'App\\' => 4,
         ),
     );
@@ -340,10 +337,6 @@ class ComposerStaticInitdc8b9303ef4eb9cc7b14856988fc4fbd
         array (
             0 => __DIR__ . '/..' . '/staudenmeir/eloquent-has-many-deep/src',
         ),
-        'Staudenmeir\\EloquentEagerLimit\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/staudenmeir/eloquent-eager-limit/src',
-        ),
         'Ramsey\\Uuid\\' => 
         array (
             0 => __DIR__ . '/..' . '/ramsey/uuid/src',
@@ -408,10 +401,6 @@ class ComposerStaticInitdc8b9303ef4eb9cc7b14856988fc4fbd
         'MyCLabs\\Enum\\' => 
         array (
             0 => __DIR__ . '/..' . '/myclabs/php-enum/src',
-        ),
-        'Mpyw\\ComposhipsEagerLimit\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/mpyw/compoships-eager-limit/src',
         ),
         'Monolog\\' => 
         array (
@@ -663,10 +652,6 @@ class ComposerStaticInitdc8b9303ef4eb9cc7b14856988fc4fbd
         array (
             0 => __DIR__ . '/..' . '/aws/aws-sdk-php/src',
         ),
-        'Awobaz\\Compoships\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/awobaz/compoships/src',
-        ),
         'App\\' => 
         array (
             0 => __DIR__ . '/../..' . '/app',
@@ -721,6 +706,7 @@ class ComposerStaticInitdc8b9303ef4eb9cc7b14856988fc4fbd
         'AWS\\CRT\\NativeResource' => __DIR__ . '/..' . '/aws/aws-crt-php/src/AWS/CRT/NativeResource.php',
         'AWS\\CRT\\OptionValue' => __DIR__ . '/..' . '/aws/aws-crt-php/src/AWS/CRT/Options.php',
         'AWS\\CRT\\Options' => __DIR__ . '/..' . '/aws/aws-crt-php/src/AWS/CRT/Options.php',
+        'App\\Console\\Commands\\MVPGeneratorCommand' => __DIR__ . '/../..' . '/app/Console/Commands/MVPGeneratorCommand.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\DomainModel\\Example' => __DIR__ . '/../..' . '/app/DomainModel/Example.php',
         'App\\Events\\Event' => __DIR__ . '/../..' . '/app/Events/Event.php',
@@ -733,9 +719,7 @@ class ComposerStaticInitdc8b9303ef4eb9cc7b14856988fc4fbd
         'App\\Http\\Controllers\\v1\\ExampleController' => __DIR__ . '/../..' . '/app/Http/Controllers/v1/ExampleController.php',
         'App\\Http\\Middleware\\Authenticate' => __DIR__ . '/../..' . '/app/Http/Middleware/Authenticate.php',
         'App\\Http\\Middleware\\HeaderMiddleware' => __DIR__ . '/../..' . '/app/Http/Middleware/HeaderMiddleware.php',
-        'App\\Http\\Middleware\\Localization' => __DIR__ . '/../..' . '/app/Http/Middleware/Localization.php',
         'App\\Http\\Requests\\ExampleFormRequest' => __DIR__ . '/../..' . '/app/Http/Requests/ExampleFormRequest.php',
-        'App\\Http\\Requests\\FormRequest' => __DIR__ . '/../..' . '/app/Http/Requests/FormRequest.php',
         'App\\Http\\Resources\\AnotherExampleResource' => __DIR__ . '/../..' . '/app/Http/Resources/AnotherExampleResource.php',
         'App\\Http\\Resources\\ExampleResource' => __DIR__ . '/../..' . '/app/Http/Resources/ExampleResource.php',
         'App\\Jobs\\ExampleJob' => __DIR__ . '/../..' . '/app/Jobs/ExampleJob.php',
@@ -754,15 +738,6 @@ class ComposerStaticInitdc8b9303ef4eb9cc7b14856988fc4fbd
         'App\\Services\\ExampleService' => __DIR__ . '/../..' . '/app/Services/ExampleService.php',
         'App\\ValueObject\\ExampleInformation' => __DIR__ . '/../..' . '/app/ValueObject/ExampleInformation.php',
         'Attribute' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/Attribute.php',
-        'Awobaz\\Compoships\\Compoships' => __DIR__ . '/..' . '/awobaz/compoships/src/Compoships.php',
-        'Awobaz\\Compoships\\Database\\Eloquent\\Concerns\\HasRelationships' => __DIR__ . '/..' . '/awobaz/compoships/src/Database/Eloquent/Concerns/HasRelationships.php',
-        'Awobaz\\Compoships\\Database\\Eloquent\\Model' => __DIR__ . '/..' . '/awobaz/compoships/src/Database/Eloquent/Model.php',
-        'Awobaz\\Compoships\\Database\\Eloquent\\Relations\\BelongsTo' => __DIR__ . '/..' . '/awobaz/compoships/src/Database/Eloquent/Relations/BelongsTo.php',
-        'Awobaz\\Compoships\\Database\\Eloquent\\Relations\\HasMany' => __DIR__ . '/..' . '/awobaz/compoships/src/Database/Eloquent/Relations/HasMany.php',
-        'Awobaz\\Compoships\\Database\\Eloquent\\Relations\\HasOne' => __DIR__ . '/..' . '/awobaz/compoships/src/Database/Eloquent/Relations/HasOne.php',
-        'Awobaz\\Compoships\\Database\\Eloquent\\Relations\\HasOneOrMany' => __DIR__ . '/..' . '/awobaz/compoships/src/Database/Eloquent/Relations/HasOneOrMany.php',
-        'Awobaz\\Compoships\\Database\\Query\\Builder' => __DIR__ . '/..' . '/awobaz/compoships/src/Database/Query/Builder.php',
-        'Awobaz\\Compoships\\Exceptions\\InvalidUsageException' => __DIR__ . '/..' . '/awobaz/compoships/src/Exceptions/InvalidUsageException.php',
         'Aws\\ACMPCA\\ACMPCAClient' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/ACMPCA/ACMPCAClient.php',
         'Aws\\ACMPCA\\Exception\\ACMPCAException' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/ACMPCA/Exception/ACMPCAException.php',
         'Aws\\AbstractConfigurationProvider' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/AbstractConfigurationProvider.php',
@@ -4579,15 +4554,6 @@ class ComposerStaticInitdc8b9303ef4eb9cc7b14856988fc4fbd
         'Monolog\\SignalHandler' => __DIR__ . '/..' . '/monolog/monolog/src/Monolog/SignalHandler.php',
         'Monolog\\Test\\TestCase' => __DIR__ . '/..' . '/monolog/monolog/src/Monolog/Test/TestCase.php',
         'Monolog\\Utils' => __DIR__ . '/..' . '/monolog/monolog/src/Monolog/Utils.php',
-        'Mpyw\\ComposhipsEagerLimit\\ComposhipsEagerLimit' => __DIR__ . '/..' . '/mpyw/compoships-eager-limit/src/ComposhipsEagerLimit.php',
-        'Mpyw\\ComposhipsEagerLimit\\Database\\Eloquent\\Relations\\HasMany' => __DIR__ . '/..' . '/mpyw/compoships-eager-limit/src/Database/Eloquent/Relations/HasMany.php',
-        'Mpyw\\ComposhipsEagerLimit\\Database\\Eloquent\\Relations\\HasOne' => __DIR__ . '/..' . '/mpyw/compoships-eager-limit/src/Database/Eloquent/Relations/HasOne.php',
-        'Mpyw\\ComposhipsEagerLimit\\Database\\Query\\Builder' => __DIR__ . '/..' . '/mpyw/compoships-eager-limit/src/Database/Query/Builder.php',
-        'Mpyw\\ComposhipsEagerLimit\\Database\\Query\\Grammar\\Concerns\\CompilesGroupLimitByMultipleColumnPartition' => __DIR__ . '/..' . '/mpyw/compoships-eager-limit/src/Database/Query/Grammar/Concerns/CompilesGroupLimitByMultipleColumnPartition.php',
-        'Mpyw\\ComposhipsEagerLimit\\Database\\Query\\Grammar\\MySqlGrammar' => __DIR__ . '/..' . '/mpyw/compoships-eager-limit/src/Database/Query/Grammar/MySqlGrammar.php',
-        'Mpyw\\ComposhipsEagerLimit\\Database\\Query\\Grammar\\PostgresGrammar' => __DIR__ . '/..' . '/mpyw/compoships-eager-limit/src/Database/Query/Grammar/PostgresGrammar.php',
-        'Mpyw\\ComposhipsEagerLimit\\Database\\Query\\Grammar\\SQLiteGrammar' => __DIR__ . '/..' . '/mpyw/compoships-eager-limit/src/Database/Query/Grammar/SQLiteGrammar.php',
-        'Mpyw\\ComposhipsEagerLimit\\Database\\Query\\Grammar\\SqlServerGrammar' => __DIR__ . '/..' . '/mpyw/compoships-eager-limit/src/Database/Query/Grammar/SqlServerGrammar.php',
         'MyCLabs\\Enum\\Enum' => __DIR__ . '/..' . '/myclabs/php-enum/src/Enum.php',
         'MyCLabs\\Enum\\PHPUnit\\Comparator' => __DIR__ . '/..' . '/myclabs/php-enum/src/PHPUnit/Comparator.php',
         'Normalizer' => __DIR__ . '/..' . '/symfony/polyfill-intl-normalizer/Resources/stubs/Normalizer.php',
@@ -6316,24 +6282,6 @@ class ComposerStaticInitdc8b9303ef4eb9cc7b14856988fc4fbd
         'SebastianBergmann\\Type\\UnknownType' => __DIR__ . '/..' . '/sebastian/type/src/UnknownType.php',
         'SebastianBergmann\\Type\\VoidType' => __DIR__ . '/..' . '/sebastian/type/src/VoidType.php',
         'SebastianBergmann\\Version' => __DIR__ . '/..' . '/sebastian/version/src/Version.php',
-        'Staudenmeir\\EloquentEagerLimit\\Builder' => __DIR__ . '/..' . '/staudenmeir/eloquent-eager-limit/src/Builder.php',
-        'Staudenmeir\\EloquentEagerLimit\\Grammars\\CompilesGroupLimit' => __DIR__ . '/..' . '/staudenmeir/eloquent-eager-limit/src/Grammars/CompilesGroupLimit.php',
-        'Staudenmeir\\EloquentEagerLimit\\Grammars\\MySqlGrammar' => __DIR__ . '/..' . '/staudenmeir/eloquent-eager-limit/src/Grammars/MySqlGrammar.php',
-        'Staudenmeir\\EloquentEagerLimit\\Grammars\\PostgresGrammar' => __DIR__ . '/..' . '/staudenmeir/eloquent-eager-limit/src/Grammars/PostgresGrammar.php',
-        'Staudenmeir\\EloquentEagerLimit\\Grammars\\SQLiteGrammar' => __DIR__ . '/..' . '/staudenmeir/eloquent-eager-limit/src/Grammars/SQLiteGrammar.php',
-        'Staudenmeir\\EloquentEagerLimit\\Grammars\\SqlServerGrammar' => __DIR__ . '/..' . '/staudenmeir/eloquent-eager-limit/src/Grammars/SqlServerGrammar.php',
-        'Staudenmeir\\EloquentEagerLimit\\HasEagerLimit' => __DIR__ . '/..' . '/staudenmeir/eloquent-eager-limit/src/HasEagerLimit.php',
-        'Staudenmeir\\EloquentEagerLimit\\Relations\\BelongsOrMorphToMany' => __DIR__ . '/..' . '/staudenmeir/eloquent-eager-limit/src/Relations/BelongsOrMorphToMany.php',
-        'Staudenmeir\\EloquentEagerLimit\\Relations\\BelongsToMany' => __DIR__ . '/..' . '/staudenmeir/eloquent-eager-limit/src/Relations/BelongsToMany.php',
-        'Staudenmeir\\EloquentEagerLimit\\Relations\\HasLimit' => __DIR__ . '/..' . '/staudenmeir/eloquent-eager-limit/src/Relations/HasLimit.php',
-        'Staudenmeir\\EloquentEagerLimit\\Relations\\HasMany' => __DIR__ . '/..' . '/staudenmeir/eloquent-eager-limit/src/Relations/HasMany.php',
-        'Staudenmeir\\EloquentEagerLimit\\Relations\\HasManyThrough' => __DIR__ . '/..' . '/staudenmeir/eloquent-eager-limit/src/Relations/HasManyThrough.php',
-        'Staudenmeir\\EloquentEagerLimit\\Relations\\HasOne' => __DIR__ . '/..' . '/staudenmeir/eloquent-eager-limit/src/Relations/HasOne.php',
-        'Staudenmeir\\EloquentEagerLimit\\Relations\\HasOneOrManyThrough' => __DIR__ . '/..' . '/staudenmeir/eloquent-eager-limit/src/Relations/HasOneOrManyThrough.php',
-        'Staudenmeir\\EloquentEagerLimit\\Relations\\HasOneThrough' => __DIR__ . '/..' . '/staudenmeir/eloquent-eager-limit/src/Relations/HasOneThrough.php',
-        'Staudenmeir\\EloquentEagerLimit\\Relations\\MorphMany' => __DIR__ . '/..' . '/staudenmeir/eloquent-eager-limit/src/Relations/MorphMany.php',
-        'Staudenmeir\\EloquentEagerLimit\\Relations\\MorphOne' => __DIR__ . '/..' . '/staudenmeir/eloquent-eager-limit/src/Relations/MorphOne.php',
-        'Staudenmeir\\EloquentEagerLimit\\Relations\\MorphToMany' => __DIR__ . '/..' . '/staudenmeir/eloquent-eager-limit/src/Relations/MorphToMany.php',
         'Staudenmeir\\EloquentHasManyDeep\\ConcatenatesRelationships' => __DIR__ . '/..' . '/staudenmeir/eloquent-has-many-deep/src/ConcatenatesRelationships.php',
         'Staudenmeir\\EloquentHasManyDeep\\HasEagerLimit' => __DIR__ . '/..' . '/staudenmeir/eloquent-has-many-deep/src/HasEagerLimit.php',
         'Staudenmeir\\EloquentHasManyDeep\\HasManyDeep' => __DIR__ . '/..' . '/staudenmeir/eloquent-has-many-deep/src/HasManyDeep.php',
@@ -7200,10 +7148,10 @@ class ComposerStaticInitdc8b9303ef4eb9cc7b14856988fc4fbd
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInitdc8b9303ef4eb9cc7b14856988fc4fbd::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInitdc8b9303ef4eb9cc7b14856988fc4fbd::$prefixDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInitdc8b9303ef4eb9cc7b14856988fc4fbd::$prefixesPsr0;
-            $loader->classMap = ComposerStaticInitdc8b9303ef4eb9cc7b14856988fc4fbd::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInita2575f02b60fc03593d28364634cf7c3::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInita2575f02b60fc03593d28364634cf7c3::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInita2575f02b60fc03593d28364634cf7c3::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInita2575f02b60fc03593d28364634cf7c3::$classMap;
 
         }, null, ClassLoader::class);
     }

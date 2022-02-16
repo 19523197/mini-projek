@@ -36,7 +36,6 @@ return array(
     'Symfony\\Component\\ErrorHandler\\' => array($vendorDir . '/symfony/error-handler'),
     'Symfony\\Component\\Console\\' => array($vendorDir . '/symfony/console'),
     'Staudenmeir\\EloquentHasManyDeep\\' => array($vendorDir . '/staudenmeir/eloquent-has-many-deep/src'),
-    'Staudenmeir\\EloquentEagerLimit\\' => array($vendorDir . '/staudenmeir/eloquent-eager-limit/src'),
     'Ramsey\\Uuid\\' => array($vendorDir . '/ramsey/uuid/src'),
     'Ramsey\\Collection\\' => array($vendorDir . '/ramsey/collection/src'),
     'Psy\\' => array($vendorDir . '/psy/psysh/src'),
@@ -53,7 +52,6 @@ return array(
     'PhpOffice\\PhpSpreadsheet\\' => array($vendorDir . '/phpoffice/phpspreadsheet/src/PhpSpreadsheet'),
     'Opis\\Closure\\' => array($vendorDir . '/opis/closure/src'),
     'MyCLabs\\Enum\\' => array($vendorDir . '/myclabs/php-enum/src'),
-    'Mpyw\\ComposhipsEagerLimit\\' => array($vendorDir . '/mpyw/compoships-eager-limit/src'),
     'Monolog\\' => array($vendorDir . '/monolog/monolog/src/Monolog'),
     'Matrix\\' => array($vendorDir . '/markbaker/matrix/classes/src'),
     'Maatwebsite\\Excel\\' => array($vendorDir . '/maatwebsite/excel/src'),
@@ -116,6 +114,5 @@ return array(
     'BenSampo\\Enum\\' => array($vendorDir . '/bensampo/laravel-enum/src'),
     'Barryvdh\\LaravelIdeHelper\\' => array($vendorDir . '/barryvdh/laravel-ide-helper/src'),
     'Aws\\' => array($vendorDir . '/aws/aws-sdk-php/src'),
-    'Awobaz\\Compoships\\' => array($vendorDir . '/awobaz/compoships/src'),
     'App\\' => array($baseDir . '/app'),
 );

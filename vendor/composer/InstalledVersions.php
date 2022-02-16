@@ -30,20 +30,11 @@ private static $installed = array (
     'aliases' => 
     array (
     ),
-    'reference' => '274dbcc7599e057875181774d38b2a16ac9b8336',
+    'reference' => '3d243bf84e7cae1ec6352b91ae13fbdc848ecbdc',
     'name' => 'laravel/lumen',
   ),
   'versions' => 
   array (
-    'awobaz/compoships' => 
-    array (
-      'pretty_version' => '2.1.3',
-      'version' => '2.1.3.0',
-      'aliases' => 
-      array (
-      ),
-      'reference' => 'c5b107f16a2a8650fb2dbc21babd4a65a0f48585',
-    ),
     'aws/aws-crt-php' => 
     array (
       'pretty_version' => 'v1.0.2',
@@ -549,7 +540,7 @@ private static $installed = array (
       'aliases' => 
       array (
       ),
-      'reference' => '274dbcc7599e057875181774d38b2a16ac9b8336',
+      'reference' => '3d243bf84e7cae1ec6352b91ae13fbdc848ecbdc',
     ),
     'laravel/lumen-framework' => 
     array (
@@ -649,15 +640,6 @@ private static $installed = array (
       array (
       ),
       'reference' => 'fd4380d6fc37626e2f799f29d91195040137eba9',
-    ),
-    'mpyw/compoships-eager-limit' => 
-    array (
-      'pretty_version' => 'v1.1',
-      'version' => '1.1.0.0',
-      'aliases' => 
-      array (
-      ),
-      'reference' => '21db6adf643e613d62d096eb8a4c18f9fde44beb',
     ),
     'mtdowling/cron-expression' => 
     array (
@@ -1167,15 +1149,6 @@ private static $installed = array (
       array (
       ),
       'reference' => 'c6c1022351a901512170118436c764e473f6de8c',
-    ),
-    'staudenmeir/eloquent-eager-limit' => 
-    array (
-      'pretty_version' => 'v1.6.1',
-      'version' => '1.6.1.0',
-      'aliases' => 
-      array (
-      ),
-      'reference' => '439135c4b3361a313c2e7102d68bf807518d1bf9',
     ),
     'staudenmeir/eloquent-has-many-deep' => 
     array (

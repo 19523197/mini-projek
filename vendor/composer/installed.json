@@ -1,69 +1,6 @@
 {
     "packages": [
         {
-            "name": "awobaz/compoships",
-            "version": "2.1.3",
-            "version_normalized": "2.1.3.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/topclaudy/compoships.git",
-                "reference": "c5b107f16a2a8650fb2dbc21babd4a65a0f48585"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/topclaudy/compoships/zipball/c5b107f16a2a8650fb2dbc21babd4a65a0f48585",
-                "reference": "c5b107f16a2a8650fb2dbc21babd4a65a0f48585",
-                "shasum": ""
-            },
-            "require": {
-                "illuminate/database": ">=5.6 <10.0"
-            },
-            "require-dev": {
-                "ext-sqlite3": "*"
-            },
-            "suggest": {
-                "awobaz/blade-active": "Blade directives for the Laravel 'Active' package",
-                "awobaz/eloquent-auto-append": "Automatically append accessors to model serialization",
-                "awobaz/eloquent-mutators": "Reusable mutators (getters/setters) for Laravel 5's Eloquent",
-                "awobaz/syntactic": "Syntactic sugar for named and indexed parameters call."
-            },
-            "time": "2021-11-29T22:11:22+00:00",
-            "type": "library",
-            "installation-source": "dist",
-            "autoload": {
-                "psr-4": {
-                    "Awobaz\\Compoships\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Claudin J. Daniel",
-                    "email": "cdaniel@awobaz.com"
-                }
-            ],
-            "description": "Laravel relationships with support for composite/multiple keys",
-            "keywords": [
-                "laravel",
-                "laravel composite keys",
-                "laravel relationships"
-            ],
-            "support": {
-                "issues": "https://github.com/topclaudy/compoships/issues",
-                "source": "https://github.com/topclaudy/compoships/tree/2.1.3"
-            },
-            "funding": [
-                {
-                    "url": "https://paypal.me/awobaz",
-                    "type": "custom"
-                }
-            ],
-            "install-path": "../awobaz/compoships"
-        },
-        {
             "name": "aws/aws-crt-php",
             "version": "v1.0.2",
             "version_normalized": "1.0.2.0",
@@ -4474,77 +4411,6 @@
             "install-path": "../monolog/monolog"
         },
         {
-            "name": "mpyw/compoships-eager-limit",
-            "version": "v1.1",
-            "version_normalized": "1.1.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/mpyw/compoships-eager-limit.git",
-                "reference": "21db6adf643e613d62d096eb8a4c18f9fde44beb"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/mpyw/compoships-eager-limit/zipball/21db6adf643e613d62d096eb8a4c18f9fde44beb",
-                "reference": "21db6adf643e613d62d096eb8a4c18f9fde44beb",
-                "shasum": ""
-            },
-            "require": {
-                "awobaz/compoships": "^2.0",
-                "illuminate/database": "^6.0 || ^7.0 || ^8.0 || ^9.0",
-                "illuminate/support": "^6.0 || ^7.0 || ^8.0 || ^9.0",
-                "php": "^7.3 || ^8.0",
-                "staudenmeir/eloquent-eager-limit": "^1.4"
-            },
-            "require-dev": {
-                "ext-json": "*",
-                "friendsofphp/php-cs-fixer": "^2.14",
-                "orchestra/testbench": "^6.0"
-            },
-            "time": "2021-06-26T21:27:15+00:00",
-            "type": "library",
-            "installation-source": "dist",
-            "autoload": {
-                "psr-4": {
-                    "Mpyw\\ComposhipsEagerLimit\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "mpyw",
-                    "email": "ryosuke_i_628@yahoo.co.jp",
-                    "homepage": "https://github.com/mpyw"
-                },
-                {
-                    "name": "Claudin J. Daniel",
-                    "homepage": "https://github.com/topclaudy"
-                },
-                {
-                    "name": "Jonas Staudenmeir",
-                    "email": "mail@jonas-staudenmeir.de",
-                    "homepage": "https://github.com/staudenmeir"
-                }
-            ],
-            "description": "topclaudy/compoships + staudenmeir/eloquent-eager-limit",
-            "keywords": [
-                "compoships",
-                "composite",
-                "database",
-                "eager",
-                "eloquent",
-                "laravel",
-                "limit"
-            ],
-            "support": {
-                "issues": "https://github.com/mpyw/compoships-eager-limit/issues",
-                "source": "https://github.com/mpyw/compoships-eager-limit/tree/v1.1"
-            },
-            "install-path": "../mpyw/compoships-eager-limit"
-        },
-        {
             "name": "mtdowling/jmespath.php",
             "version": "2.6.1",
             "version_normalized": "2.6.1.0",
@@ -7738,59 +7604,6 @@
                 }
             ],
             "install-path": "../sebastian/version"
-        },
-        {
-            "name": "staudenmeir/eloquent-eager-limit",
-            "version": "v1.6.1",
-            "version_normalized": "1.6.1.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/staudenmeir/eloquent-eager-limit.git",
-                "reference": "439135c4b3361a313c2e7102d68bf807518d1bf9"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/staudenmeir/eloquent-eager-limit/zipball/439135c4b3361a313c2e7102d68bf807518d1bf9",
-                "reference": "439135c4b3361a313c2e7102d68bf807518d1bf9",
-                "shasum": ""
-            },
-            "require": {
-                "illuminate/database": "^8.0",
-                "php": "^7.3|^8.0"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "^9.3"
-            },
-            "time": "2020-11-22T18:13:55+00:00",
-            "type": "library",
-            "installation-source": "dist",
-            "autoload": {
-                "psr-4": {
-                    "Staudenmeir\\EloquentEagerLimit\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Jonas Staudenmeir",
-                    "email": "mail@jonas-staudenmeir.de"
-                }
-            ],
-            "description": "Laravel Eloquent eager loading with limit",
-            "support": {
-                "issues": "https://github.com/staudenmeir/eloquent-eager-limit/issues",
-                "source": "https://github.com/staudenmeir/eloquent-eager-limit/tree/v1.6.1"
-            },
-            "funding": [
-                {
-                    "url": "https://paypal.me/JonasStaudenmeir",
-                    "type": "custom"
-                }
-            ],
-            "install-path": "../staudenmeir/eloquent-eager-limit"
         },
         {
             "name": "staudenmeir/eloquent-has-many-deep",
