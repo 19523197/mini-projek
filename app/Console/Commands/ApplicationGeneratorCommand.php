@@ -10,22 +10,37 @@ class ApplicationGeneratorCommand extends Command
     protected $signature = 'generate:app';
     protected $description = 'Generate application configuration';
 
-    protected $file, $directoryPath, $stubsToCreate, $fileName, $teamName, $appName, $dbDevUser, $dbDevPass, $dbStagUser, $dbStagPass, $dbProdUser, $dbProdPass;
+    protected $file, $directoryPath, $stubsToCreate, $fileName, $teamName, $appName, $dbDevName, $dbDevUser, $dbDevPass, $dbStagName, $dbStagUser, $dbStagPass, $dbProdName, $dbProdUser, $dbProdPass, $maintainerName, $maintainerEmail;
 
     private static $deploymentLists = [
-        'Develop' => 'dev-deployment',
-        'Stagging' => 'stag-deployment',
-        'Production' => 'prod-deployment',
+        'Develop' => 'dev-deployment.yaml',
+        'Stagging' => 'stag-deployment.yaml',
+        'Production' => 'prod-deployment.yaml',
+        'EnvDeploy' => '.env.deploy',
+        'EnvExample' => '.env.example',
+        'DockerFile' => 'Dockerfile',
+        'DockerSh' => 'docker.sh',
+        'DockerCompose' => 'docker-compose.yml',
     ];
     private static $directoriesPath = [
         'Develop' => 'deploy',
         'Stagging' => 'deploy',
         'Production' => 'deploy',
+        'EnvDeploy' => '',
+        'EnvExample' => '',
+        'DockerFile' => '',
+        'DockerSh' => '',
+        'DockerCompose' => '',
     ];
     private static $stubsPath = [
-        'Develop' => __DIR__ . '/../../../stubs/deployment.dev.stub',
-        'Stagging' => __DIR__ . '/../../../stubs/deployment.stag.stub',
-        'Production' => __DIR__ . '/../../../stubs/deployment.prod.stub',
+        'Develop' => __DIR__ . '/../../../uiigateway/deployment.dev.bsi',
+        'Stagging' => __DIR__ . '/../../../uiigateway/deployment.stag.bsi',
+        'Production' => __DIR__ . '/../../../uiigateway/deployment.prod.bsi',
+        'EnvDeploy' => __DIR__ . '/../../../uiigateway/env.deploy.bsi',
+        'EnvExample' => __DIR__ . '/../../../uiigateway/env.example.bsi',
+        'DockerFile' => __DIR__ . '/../../../uiigateway/docker.file.bsi',
+        'DockerSh' => __DIR__ . '/../../../uiigateway/docker.sh.bsi',
+        'DockerCompose' => __DIR__ . '/../../../uiigateway/docker.compose.bsi',
     ];
 
     public function __construct(Filesystem $files)
@@ -41,17 +56,16 @@ class ApplicationGeneratorCommand extends Command
 
         if ($continue) {
             $this->teamName = $this->ask('What your team name?');
+            $this->maintainerName = $this->ask('What your name?');
+            $this->maintainerEmail = $this->ask('What your email?');
             $this->appName = $this->ask('What your application name?');
+            $this->dbName = $this->ask('What your database name? This should have same name on all environment.');
             $this->dbDevUser = $this->ask('What your username database on develop?');
             $this->dbDevPass = $this->ask('What your password database on develop?');
             $this->dbStagUser = $this->ask('What your username database on stagging?');
             $this->dbStagPass = $this->ask('What your password database on stagging?');
             $this->dbProdUser = $this->ask('What your username database on production?');
             $this->dbProdPass = $this->ask('What your password database on production?');
-
-            $this->folderFileName = $this->ask('What file and folder name do you want to create?');
-
-            $directoryCreated = collect([]);
 
             $hasFailedOperation = false;
             $directoryCreated = [];
@@ -99,6 +113,7 @@ class ApplicationGeneratorCommand extends Command
 
             if (!$hasFailedOperation) {
                 $this->output->progressFinish();
+
                 return $this->info('Success. Your application was configured. Next, you can run "php artisan generate:mvp" to create MVP feature.');
             }
         }
@@ -125,7 +140,7 @@ class ApplicationGeneratorCommand extends Command
      */
     public function getSourceFilePath()
     {
-        return base_path($this->directoryPath).'/'.$this->filename.'.yaml';
+        return base_path($this->directoryPath).'/'.$this->filename;
     }
 
     /**
@@ -166,6 +181,9 @@ class ApplicationGeneratorCommand extends Command
             strtolower('DBSTAGPASS') => $this->dbStagPass,
             strtolower('DBPRODUSER') => $this->dbProdUser,
             strtolower('DBPRODPASS') => $this->dbProdPass,
+            strtolower('DBNAME') => $this->dbName,
+            strtolower('MAINTAINERNAME') => $this->maintainerName,
+            strtolower('MAINTAINEREMAIL') => $this->maintainerEmail,
         ];
     }
 
