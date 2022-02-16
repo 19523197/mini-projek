@@ -176,8 +176,8 @@ class ApplicationGeneratorCommand extends Command
     private function getStubVariables()
     {
         return [
-            strtolower('TEAMNAME') => $this->teamName,
-            strtolower('APPNAME') => $this->appName,
+            strtolower('TEAMNAME') => strtolower($this->teamName),
+            strtolower('APPNAME') => strtolower($this->appName),
             strtolower('DBDEVUSER') => $this->dbDevUser,
             strtolower('DBDEVPASS') => $this->dbDevPass,
             strtolower('DBSTAGUSER') => $this->dbStagUser,
