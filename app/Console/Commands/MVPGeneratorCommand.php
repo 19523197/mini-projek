@@ -51,6 +51,21 @@ class MVPGeneratorCommand extends Command
         'DomainModel' => __DIR__ . '/../../../uiigateway/domain.model.bsi',
         'ValueObject' => __DIR__ . '/../../../uiigateway/value.object.bsi',
     ];
+    private static $routesPath = __DIR__ . '/../../../routes/web.php';
+    private static $routesFindToPrepend = [
+        'Public' => "}); // END_OF_PUBLIC_API_LINE (DONT DELETE THIS)",
+        'Private' => "}); // END_OF_PRIVATE_API_LINE (DONT DELETE THIS)"
+    ];
+    private static $routesPackage = [
+        'NewLineEnd' => "",
+        'Destroy' => "    \$router->delete('/destroy/{uuid}', ",
+        'Update' => "    \$router->put('/update', ",
+        'Create' => "    \$router->post('/create', ",
+        'Show' => "    \$router->get('/show/{uuid}', ",
+        'Index' => "    \$router->get('/index', ",
+        'CommentRoute' => '    // Routes for ',
+        'NewLineStart' => "",
+    ];
 
     public function __construct(Filesystem $files)
     {
@@ -64,7 +79,8 @@ class MVPGeneratorCommand extends Command
         $continue = $this->confirm('This will processed your request to create new MVP. Do you want to continue?');
 
         if ($continue) {
-            $this->folderFileName = $this->ask('What file and folder name do you want to create?');
+            $this->folderFileName = $this->ask('What file and folder name do you want to create? (Write with CamelCase)');
+            $this->publicOrPrivateApi = $this->choice('Is API used for PUBLIC or PRIVATE?', ['PUBLIC', 'PRIVATE']);
 
             $hasFailedOperation = false;
             $directoryCreated = [];
@@ -113,6 +129,26 @@ class MVPGeneratorCommand extends Command
 
             if (!$hasFailedOperation) {
                 $this->output->progressFinish();
+
+                $routesFind = static::$routesFindToPrepend[ucwords(strtolower($this->publicOrPrivateApi))];
+
+                $contents = file(static::$routesPath, FILE_IGNORE_NEW_LINES);
+                if ($index = array_search($routesFind, $contents)) {
+                    $indexOfArrayRoute = $index;
+
+                    foreach (static::$routesPackage as $key => $route) {
+                        if ($key == 'CommentRoute') {
+                            $route = $route.' '.$this->folderFileName;
+                        } else if ($key !== 'NewLineStart' && $key !== 'NewLineEnd') {
+                            $route = $route."'".$this->folderFileName."\\".$this->folderFileName."@".strtolower($key)."');";
+                        }
+                        array_splice($contents, $indexOfArrayRoute, 0, $route);
+                    }
+
+                    $temp = implode("\n", $contents);
+                    file_put_contents(static::$routesPath, $temp);
+                }
+
                 return $this->info('Success. All '.$this->folderFileName.' MVP was created!');
             }
         }
