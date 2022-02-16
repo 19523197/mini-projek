@@ -4,9 +4,9 @@ namespace {{ namespace }};
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\{{ classname }}Request;
-use App\Http\Resources\{{ classname }}Resource;
-use App\Repositories\Contracts\{{ classname }}RepositoryContract;
-use App\Services\{{ classname }}Service;
+use App\Http\Resources\{{ classname }}\{{ classname }}Resource;
+use App\Repositories\Contracts\{{ classname }}\{{ classname }}RepositoryContract;
+use App\Services\{{ classname }}\{{ classname }}Service;
 use Illuminate\Http\Request;
 
 /**
