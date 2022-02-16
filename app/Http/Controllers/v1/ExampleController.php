@@ -17,9 +17,9 @@ class ExampleController extends Controller
 
     public function __invoke()
     {
-        $examples = $this->repository->getActiveExamplesWithOrganizations();
+        $example = $this->repository->findByOrganizationId(96);
 
-        return ExampleResource::collection($examples)
+        return ExampleResource::make($example)
             ->additional([
                 'info' => __('Contoh pesan respon.')
             ]);

@@ -2,12 +2,12 @@
 
 namespace App\Models;
 
-use App\Treasures\Illuminate\Activable;
-use App\Treasures\Illuminate\SoftDeletes;
-use App\Treasures\Utility\TitleCase;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
+use UIIGateway\Castle\Database\Activable;
+use UIIGateway\Castle\Database\SoftDeletes;
+use UIIGateway\Castle\Utility\TitleCase;
 
 class Organisasi extends Model
 {

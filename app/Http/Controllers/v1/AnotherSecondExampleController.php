@@ -30,9 +30,9 @@ class AnotherSecondExampleController extends Controller
 
     public function update(ExampleFormRequest $request, $uuid)
     {
-        $example = $this->service->update($uuid, $request->validated());
+        $this->service->update($uuid, $request->validated());
 
-        return $this->responseUpdated(new ExampleResource($example), 'contoh');
+        return $this->responseUpdated('contoh');
     }
 
     public function destroy($uuid)

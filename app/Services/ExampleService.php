@@ -2,9 +2,11 @@
 
 namespace App\Services;
 
-use App\Exceptions\EntityNotFoundException;
+use App\DomainModel\Example;
 use App\Repositories\Contracts\ExampleRepositoryContract;
+use App\ValueObject\ExampleInformation;
 use Illuminate\Support\Facades\DB;
+use UIIGateway\Castle\Exceptions\EntityNotFoundException;
 
 class ExampleService
 {
@@ -15,14 +17,18 @@ class ExampleService
         $this->repository = $repository;
     }
 
-    public function create(array $data): array
+    public function create(array $data)
     {
-        return DB::transaction(function () use ($data) {
-            return $this->repository->add($data);
+        DB::transaction(function () use ($data) {
+            $this->repository->save(new Example(new ExampleInformation(
+                null,
+                null,
+                2
+            )));
         });
     }
 
-    public function update(string $uuid, array $data): array
+    public function update(string $uuid, array $data)
     {
         return DB::transaction(function () use ($uuid, $data) {
             $example = $this->repository->findByUuid($uuid);
@@ -31,7 +37,11 @@ class ExampleService
                 throw new EntityNotFoundException('contoh');
             }
 
-            return $this->repository->add($data, $example);
+            $example->exampleInformation->organizationId = $data['organisasi_id'];
+
+            $this->repository->save($example);
+
+            return $example;
         });
     }
 

@@ -2,10 +2,10 @@
 
 namespace App\Models;
 
-use App\Treasures\Database\HasRelationships;
-use App\Treasures\Illuminate\Activable;
-use App\Treasures\Illuminate\SoftDeletes;
 use Illuminate\Database\Eloquent\Model;
+use UIIGateway\Castle\Database\Activable;
+use UIIGateway\Castle\Database\HasRelationships;
+use UIIGateway\Castle\Database\SoftDeletes;
 
 class ContohModel extends Model
 {

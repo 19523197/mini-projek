@@ -116,6 +116,7 @@ return [
     'uploaded' => 'The :attribute failed to upload.',
     'url' => 'The :attribute format is invalid.',
     'uuid' => 'The :attribute must be a valid UUID.',
+    'required_if_other_empty' => 'The :attribute is required when :other is empty.',
 
     /*
     |--------------------------------------------------------------------------

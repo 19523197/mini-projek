@@ -2,42 +2,47 @@
 
 namespace App\Http\Controllers;
 
-use App\Treasures\Illuminate\Http\Resources\Resource;
-use App\Treasures\Utility\Translation;
 use Laravel\Lumen\Routing\Controller as BaseController;
+use UIIGateway\Castle\Utility\Translation;
 
 class Controller extends BaseController
 {
     protected function responseCreated(
-        Resource $resource,
         string $entity,
-        $message = ':entity berhasil ditambahkan.'
+        $message = ':entity berhasil ditambahkan.',
+        $replace = []
     ) {
-        return $resource
-            ->additional([
-                'info' => __($message, ['entity' => Translation::transEntity($entity)])
-            ])
-            ->response()
-            ->setStatusCode(201);
+        return response()->json([
+            'info' => __($message, array_merge(
+                ['entity' => Translation::transEntity($entity)],
+                $replace
+            ))
+        ], 201);
     }
 
     protected function responseUpdated(
-        Resource $resource,
         string $entity,
-        $message = ':entity berhasil diperbarui.'
+        $message = ':entity berhasil diperbarui.',
+        $replace = []
     ) {
-        return $resource
-            ->additional([
-                'info' => __($message, ['entity' => Translation::transEntity($entity)])
-            ]);
+        return response()->json([
+            'info' => __($message, array_merge(
+                ['entity' => Translation::transEntity($entity)],
+                $replace
+            ))
+        ]);
     }
 
     protected function responseDeleted(
         string $entity,
-        $message = ':entity berhasil dihapus.'
+        $message = ':entity berhasil dihapus.',
+        $replace = []
     ) {
         return response()->json([
-            'info' => __($message, ['entity' => Translation::transEntity($entity)])
+            'info' => __($message, array_merge(
+                ['entity' => Translation::transEntity($entity)],
+                $replace
+            ))
         ]);
     }
 }

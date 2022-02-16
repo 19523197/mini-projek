@@ -2,11 +2,8 @@
 
 namespace App\Http\Resources;
 
-use App\Treasures\Illuminate\Http\Resources\Resource;
+use UIIGateway\Castle\Http\Resources\Resource;
 
-/**
- * @mixin \App\Models\ExampleModel
- */
 class ExampleResource extends Resource
 {
     public function toArray($request)

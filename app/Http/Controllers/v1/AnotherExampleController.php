@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\v1;
 
 use App\Http\Controllers\Controller;
-use App\Http\Resources\ExampleResource;
 use App\Rules\ExampleRule;
 use App\Services\ExampleService;
 use Illuminate\Http\Request;
@@ -25,8 +24,8 @@ class AnotherExampleController extends Controller
             'example_field2' => ['json'],
         ]);
 
-        $example = $this->service->create($requestData);
+        $this->service->create($requestData);
 
-        return $this->responseCreated(new ExampleResource($example), 'contoh');
+        return $this->responseCreated('contoh');
     }
 }

@@ -2,19 +2,32 @@
 
 namespace App\Repositories\Contracts;
 
-use Illuminate\Support\Collection;
+use App\DomainModel\Example;
 
 interface ExampleRepositoryContract
 {
-    public function all(): Collection;
+    /**
+     * @return \Illuminate\Support\Collection<\App\DomainModel\Example>
+     */
+    public function all();
 
-    public function add(array $data, array $entity = null): array;
+    /**
+     * @return \App\DomainModel\Example|null
+     */
+    public function findByUuid(string $uuid);
 
-    public function remove(array $entity): void;
+    /**
+     * @return void
+     */
+    public function save(Example $example);
 
-    public function last(): ?array;
+    /**
+     * @return void
+     */
+    public function remove(Example $example);
 
-    public function getActiveExamplesWithOrganizations(): Collection;
-
-    public function findByUuid(string $uuid): ?array;
+    /**
+     * @return \App\DomainModel\Example|null
+     */
+    public function findByOrganizationId(string $organizationId);
 }

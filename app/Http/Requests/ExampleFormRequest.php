@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use App\Rules\ExampleRule;
+use UIIGateway\Castle\Http\FormRequest;
 
 class ExampleFormRequest extends FormRequest
 {

@@ -3,8 +3,9 @@
 namespace App\Rules;
 
 use Illuminate\Contracts\Validation\Rule;
+use UIIGateway\Castle\Rules\BaseRule;
 
-class ExampleRule implements Rule
+class ExampleRule extends BaseRule implements Rule
 {
     public function __construct()
     {

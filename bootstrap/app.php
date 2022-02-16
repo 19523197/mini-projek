@@ -60,7 +60,6 @@ $app->singleton(
 */
 
 $app->configure('app');
-$app->configure('ide-helper');
 
 /*
 |--------------------------------------------------------------------------
@@ -73,9 +72,9 @@ $app->configure('ide-helper');
 |
 */
 
-$app->middleware([
-    App\Http\Middleware\Localization::class,
-]);
+//$app->middleware([
+//    App\Http\Middleware\Localization::class,
+//]);
 
 $app->routeMiddleware([
     'header' => \App\Http\Middleware\HeaderMiddleware::class,
@@ -92,15 +91,13 @@ $app->routeMiddleware([
 |
 */
 
+$app->register(UIIGateway\Castle\ServiceProvider::class);
+
 $app->register(App\Providers\AppServiceProvider::class);
 // $app->register(App\Providers\AuthServiceProvider::class);
 // $app->register(App\Providers\EventServiceProvider::class);
 $app->register(App\Providers\RepositoryServiceProvider::class);
 $app->register(Flipbox\LumenGenerator\LumenGeneratorServiceProvider::class);
-
-if ($app->environment() !== 'production') {
-    $app->register(Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class);
-}
 
 /*
 |--------------------------------------------------------------------------

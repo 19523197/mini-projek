@@ -2,74 +2,89 @@
 
 namespace App\Repositories;
 
+use App\DomainModel\Example;
 use App\Models\ContohModel;
 use App\Repositories\Contracts\ExampleRepositoryContract;
-use Illuminate\Database\Eloquent\Relations\Relation;
-use Illuminate\Support\Collection;
+use App\ValueObject\ExampleInformation;
+use Exception;
 use Illuminate\Support\Facades\DB;
+use InvalidArgumentException;
+use UIIGateway\Castle\Repositories\BaseRepository;
 
-class ExampleRepository implements ExampleRepositoryContract
+class ExampleRepository extends BaseRepository implements ExampleRepositoryContract
 {
-    public function all(): Collection
+    public function all()
     {
-        // return new Collection(ContohModel::query()->get()->toArray());
-        return DB::table('contoh')->get();
+        $results = ContohModel::all();
+
+        return $this->mapToDomainModel($results);
     }
 
-    public function add(array $data, array $entity = null): array
+    public function findByUuid(string $uuid)
     {
-        if ($entity) {
-            $entity = (new ContohModel)->newFromBuilder($entity);
-            $entity->update($data);
+        $result = DB::table('example')->whereUuid($uuid)->first();
 
-            return $entity->toArray();
+        return $this->toDomainModel((array) $result);
+    }
+
+    public function save(Example $example)
+    {
+        if (is_null($example->uuid())) {
+            $this->insert($example);
+        } else {
+            $this->update($example);
+        }
+    }
+
+    public function findByOrganizationId(string $organizationId)
+    {
+        $result = DB::table('example')
+            ->whereIn('id_organisasi', $organizationId)
+            ->first();
+
+        if (is_null($result)) {
+            return null;
         }
 
-        ContohModel::create($data);
-
-        // Since we use trigger, we need to query latest record from DB
-        // to get the completed data for the recently created model.
-        return $this->last();
+        return $this->toDomainModel((array) $result);
     }
 
-    public function remove(array $entity): void
+    protected function insert(Example $example)
     {
-        $entity = (new ContohModel)->newFromBuilder($entity);
-        $entity->delete();
+        throw new Exception('Not implemented.');
     }
 
-    public function findByUuid(string $uuid): ?array
+    protected function update(Example $example)
     {
-        $instance = ContohModel::whereUuid($uuid)->first();
+        $record = $this->eloquentFindByUuid($example->uuid());
 
-        if ($instance) {
-            $instance = $instance->toArray();
+        if (is_null($record)) {
+            throw new InvalidArgumentException('Failed to get record for update.');
         }
 
-        return $instance;
+        return $record->forceFill([
+            'id_organisasi' => $example->organizationId(),
+        ])->save();
     }
 
-    public function last(): ?array
+    public function remove(Example $example)
     {
-        $instance = ContohModel::query()->latest()->first();
-
-        if ($instance) {
-            $instance = $instance->toArray();
-        }
-
-        return $instance;
+        DB::table('example')
+            ->where('uuid', $example->uuid())
+            ->delete();
     }
 
-    public function getActiveExamplesWithOrganizations(): Collection
+    protected function eloquentFindByUuid(string $uuid)
     {
-        return new Collection(
-            ContohModel::query()
-                ->onlyActive()
-                ->with(['organisasi' => function (Relation $query) {
-                    $query->onlyActive();
-                }])
-                ->get()
-                ->toArray()
-        );
+        return ContohModel::whereUuid($uuid)->first();
+    }
+
+    protected function toDomainModel(array $data)
+    {
+        return new \App\DomainModel\Example(new ExampleInformation(
+            $data['id'],
+            $data['uuid'],
+            $data['id_organisasi']
+        ));
     }
 }
