@@ -66,8 +66,6 @@ class MVPGeneratorCommand extends Command
         if ($continue) {
             $this->folderFileName = $this->ask('What file and folder name do you want to create?');
 
-            $directoryCreated = collect([]);
-
             $hasFailedOperation = false;
             $directoryCreated = [];
             $this->output->progressStart(count(static::$lastPrefixWantsToCreate));
