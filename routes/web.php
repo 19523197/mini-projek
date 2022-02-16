@@ -41,7 +41,6 @@ $router->get('/public/api/v1', function () use ($router) {
 | Build your public routes here
 */
 $router->group([ 'prefix' => '/public/api/v1', 'middleware' => ['header'] ], function () use ($router) {
-
 }); // END_OF_PUBLIC_API_LINE (DONT DELETE THIS)
 
 /*
@@ -52,5 +51,4 @@ $router->group([ 'prefix' => '/public/api/v1', 'middleware' => ['header'] ], fun
 | Build your private routes here
 */
 $router->group(['prefix' => '/private/api/v1', 'namespace' => 'Private'], function () use ($router) {
-
 }); // END_OF_PRIVATE_API_LINE (DONT DELETE THIS)
