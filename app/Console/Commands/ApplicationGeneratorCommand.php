@@ -73,8 +73,8 @@ class ApplicationGeneratorCommand extends Command
             $hasFailedOperation = false;
             $directoryCreated = [];
             $this->output->progressStart(count(static::$deploymentLists));
-            foreach (static::$deploymentLists as $deployment => $filename) {
-                $this->fileName = $filename;
+            foreach (static::$deploymentLists as $deployment => $fileName) {
+                $this->fileName = $fileName;
                 $this->stubsToCreate = $this->getStubsToCreate($deployment);
                 $this->directoryPath = $this->getDirectoryPathToCreate($deployment);
 
@@ -143,7 +143,7 @@ class ApplicationGeneratorCommand extends Command
      */
     public function getSourceFilePath()
     {
-        return base_path($this->directoryPath).'/'.$this->filename;
+        return base_path($this->directoryPath).'/'.$this->fileName;
     }
 
     /**
