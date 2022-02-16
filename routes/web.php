@@ -58,4 +58,3 @@ $router->group([ 'prefix' => '/public/api/v1', 'middleware' => ['header'] ], fun
 $router->group(['prefix' => '/private/api/v1', 'namespace' => 'Private\v1'], function () use ($router) {
     $router->get('/example', 'ExamplePrivateApiController');
 }); // END_OF_PRIVATE_API_LINE (DONT DELETE THIS)
-
