@@ -41,11 +41,7 @@ $router->get('/public/api/v1', function () use ($router) {
 | Build your public routes here
 */
 $router->group([ 'prefix' => '/public/api/v1', 'middleware' => ['header'] ], function () use ($router) {
-    $router->get('/example', 'ExampleController');
-    $router->post('/another-example', 'AnotherExampleController');
-    $router->get('/another-second-example', 'AnotherSecondExampleController@index');
-    $router->put('/another-second-example/{uuid}', 'AnotherSecondExampleController@update');
-    $router->delete('/another-second-example/{uuid}', 'AnotherSecondExampleController@destroy');
+
 }); // END_OF_PUBLIC_API_LINE (DONT DELETE THIS)
 
 /*
@@ -55,6 +51,6 @@ $router->group([ 'prefix' => '/public/api/v1', 'middleware' => ['header'] ], fun
 |
 | Build your private routes here
 */
-$router->group(['prefix' => '/private/api/v1', 'namespace' => 'Private\v1'], function () use ($router) {
-    $router->get('/example', 'ExamplePrivateApiController');
+$router->group(['prefix' => '/private/api/v1', 'namespace' => 'Private'], function () use ($router) {
+
 }); // END_OF_PRIVATE_API_LINE (DONT DELETE THIS)
