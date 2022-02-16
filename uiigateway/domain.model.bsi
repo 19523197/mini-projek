@@ -2,7 +2,7 @@
 
 namespace {{ namespace }};
 
-use App\ValueObject\{{ classname }}Information;
+use App\ValueObject\{{ classname }}\{{ classname }}Information;
 
 class {{ classname }}DomainModel
 {
