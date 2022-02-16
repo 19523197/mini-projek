@@ -7,6 +7,7 @@ ENV IS_LOCAL $IS_LOCAL
 
 COPY app /var/www/html/app/
 COPY bootstrap /var/www/html/bootstrap/
+COPY config /var/www/html/config/
 COPY public /var/www/html/public/
 COPY routes /var/www/html/routes/
 COPY resources /var/www/html/resources/
