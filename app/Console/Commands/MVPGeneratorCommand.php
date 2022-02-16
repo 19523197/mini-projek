@@ -13,15 +13,43 @@ class MVPGeneratorCommand extends Command
     protected $file, $teamName, $appName, $folderFileName, $directoryPath, $stubsToCreate, $nameSpacesToCreate, $lastPrefixToCreate;
     private static $lastPrefixWantsToCreate = [
         'Controller',
+        'Resource',
+        'Request',
+        'Service',
+        'Repository',
+        'RepositoryContract',
+        'DomainModel',
+        'ValueObject',
     ];
     private static $directoriesPath = [
         'Controller' => 'app/Http/Controllers',
+        'Resource' => 'app/Http/Resources',
+        'Request' => 'app/Http/Requests',
+        'Service' => 'app/Services',
+        'Repository' => 'app/Repositories',
+        'RepositoryContract' => 'app/Repositories/Contracts',
+        'DomainModel' => 'app/DomainModel',
+        'ValueObject' => 'app/ValueObject',
     ];
     private static $nameSpacesPath = [
         'Controller' => 'App\Http\Controllers',
+        'Resource' => 'App\Http\Resources',
+        'Request' => 'App\Http\Requests',
+        'Service' => 'App\Services',
+        'Repository' => 'App\Repositories',
+        'RepositoryContract' => 'App\Repositories\Contracts',
+        'DomainModel' => 'App\DomainModel',
+        'ValueObject' => 'App\ValueObject',
     ];
     private static $stubsPath = [
-        'Controller' => __DIR__ . '/../../../stubs/controller.stub',
+        'Controller' => __DIR__ . '/../../../uiigateway/controller.bsi',
+        'Resource' => __DIR__ . '/../../../uiigateway/resource.bsi',
+        'Request' => __DIR__ . '/../../../uiigateway/request.bsi',
+        'Service' => __DIR__ . '/../../../uiigateway/service.bsi',
+        'Repository' => __DIR__ . '/../../../uiigateway/repository.bsi',
+        'RepositoryContract' => __DIR__ . '/../../../uiigateway/repository.contract.bsi',
+        'DomainModel' => __DIR__ . '/../../../uiigateway/domain.model.bsi',
+        'ValueObject' => __DIR__ . '/../../../uiigateway/value.object.bsi',
     ];
 
     public function __construct(Filesystem $files)
@@ -36,8 +64,6 @@ class MVPGeneratorCommand extends Command
         $continue = $this->confirm('This will processed your request to create new MVP. Do you want to continue?');
 
         if ($continue) {
-            $this->teamName = strtolower($this->ask('What your team name?'));
-            $this->appName = $this->ask('What application name do you want to create?');
             $this->folderFileName = $this->ask('What file and folder name do you want to create?');
 
             $directoryCreated = collect([]);
@@ -160,7 +186,7 @@ class MVPGeneratorCommand extends Command
     {
         return [
             strtolower('NAMESPACE') => $this->nameSpacesToCreate,
-            strtolower('CLASS') => $this->getSingularClassName($this->folderFileName),
+            strtolower('CLASSNAME') => $this->getSingularClassName($this->folderFileName),
         ];
     }
 
