@@ -43,7 +43,7 @@ class {{ classname }}Request extends FormRequest
     public function messages()
     {
         return [
-            'required' => 'Parameter :attribute wajib diisi'
+            'required' => 'Parameter :attribute wajib diisi',
             'other_rule' => 'Other rule message'
         ];
     }
