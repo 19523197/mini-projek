@@ -93,6 +93,14 @@ class ApplicationGeneratorCommand extends Command
                     $this->alert("File already exist detected");
                     $this->warn("File: {$directory}");
 
+                    $this->warn("");
+                    $this->warn('Hints: delete this file first. This file will be generated again with "php artisan generate:app"');
+
+                    foreach (static::$directoriesPath as $key => $path) {
+                        $path = $path != '' ? $path.'/' : $path;
+                        $this->warn('Delete => '.$path.''.static::$deploymentLists[$key]);
+                    }
+
                     $hasFailedOperation = true;
 
                     $this->warn("");
