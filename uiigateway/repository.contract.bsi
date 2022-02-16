@@ -2,17 +2,17 @@
 
 namespace {{ namespace }};
 
-use App\DomainModel\Example;
+use App\DomainModel\{{ classname }}\{{ classname }}DomainModel;
 
 interface {{ classname }}RepositoryContract
 {
     /**
-     * @return \Illuminate\Support\Collection<\App\DomainModel\Example>
+     * @return \Illuminate\Support\Collection<\App\DomainModel\{{ classname }}\{{ classname }}DomainModel>
      */
     public function all();
 
     /**
-     * @return \App\DomainModel\Example|null
+     * @return \App\DomainModel\{{ classname }}\{{ classname }}DomainModel|null
      */
     public function findByUuid(string $uuid);
 

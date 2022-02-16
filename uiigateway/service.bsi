@@ -2,9 +2,9 @@
 
 namespace {{ namespace }};
 
-use App\DomainModel\{{ classname }}DomainModel;
-use App\Repositories\Contracts\{{ classname }}RepositoryContract;
-use App\ValueObject\{{ classname }}Information;
+use App\DomainModel\{{ classname }}\{{ classname }}DomainModel;
+use App\Repositories\Contracts\{{ classname }}\{{ classname }}RepositoryContract;
+use App\ValueObject\{{ classname }}\{{ classname }}ValueObject;
 use Illuminate\Support\Facades\DB;
 use UIIGateway\Castle\Exceptions\EntityNotFoundException;
 
@@ -39,7 +39,7 @@ class {{ classname }}Service
     public function create(array $data)
     {
         DB::transaction(function () use ($data) {
-            $this->repository->save(new {{ classname }}DomainModel(new {{ classname }}Information(null, null, 2)));
+            $this->repository->save(new {{ classname }}DomainModel(new {{ classname }}ValueObject(null, null, 2)));
         });
     }
 
@@ -60,7 +60,7 @@ class {{ classname }}Service
                 throw new EntityNotFoundException('contoh');
             }
 
-            $example->{{ classname }}Information->organizationId = $data['organisasi_id'];
+            $example->{{ classname }}ValueObject->organizationId = $data['organisasi_id'];
 
             $this->repository->save($example);
 

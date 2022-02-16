@@ -2,10 +2,10 @@
 
 namespace {{ namespace }};
 
-use App\DomainModel\{{ classname }}DomainModel;
+use App\DomainModel\{{ classname }}\{{ classname }}DomainModel;
 use App\Models\ContohModel;
-use App\Repositories\Contracts\{{ classname }}RepositoryContract;
-use App\ValueObject\{{ classname }}Information;
+use App\Repositories\Contracts\{{ classname }}\{{ classname }}RepositoryContract;
+use App\ValueObject\{{ classname }}\{{ classname }}ValueObject;
 use Exception;
 use Illuminate\Support\Facades\DB;
 use InvalidArgumentException;
@@ -129,7 +129,7 @@ class {{ classname }}Repository extends BaseRepository implements {{ classname }
      */
     protected function toDomainModel(array $data)
     {
-        return new {{ classname }}DomainModel(new {{ classname }}Information(
+        return new {{ classname }}DomainModel(new {{ classname }}ValueObject(
             $data['id'],
             $data['uuid'],
             $data['id_organisasi']
