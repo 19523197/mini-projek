@@ -19,10 +19,10 @@ interface {{ classname }}RepositoryContract
     /**
      * @return void
      */
-    public function save(Example $example);
+    public function save({{ classname }}DomainModel $example);
 
     /**
      * @return void
      */
-    public function remove(Example $example);
+    public function remove({{ classname }}DomainModel $example);
 }
