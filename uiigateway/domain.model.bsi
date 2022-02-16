@@ -1,0 +1,34 @@
+<?php
+
+namespace {{ namespace }};
+
+use App\ValueObject\{{ classname }}Information;
+
+class {{ classname }}DomainModel
+{
+    public {{ classname }}Information $information;
+
+    public function __construct({{ classname }}Information $information)
+    {
+        $this->information = $information;
+    }
+
+    /**
+     * Declare function about data variable
+     */
+
+    public function id()
+    {
+        return $this->information->id;
+    }
+
+    public function uuid()
+    {
+        return $this->information->uuid;
+    }
+
+    public function organizationId()
+    {
+        return $this->information->organizationId;
+    }
+}

@@ -1,0 +1,28 @@
+<?php
+
+namespace {{ namespace }};
+
+use App\DomainModel\Example;
+
+interface {{ classname }}RepositoryContract
+{
+    /**
+     * @return \Illuminate\Support\Collection<\App\DomainModel\Example>
+     */
+    public function all();
+
+    /**
+     * @return \App\DomainModel\Example|null
+     */
+    public function findByUuid(string $uuid);
+
+    /**
+     * @return void
+     */
+    public function save(Example $example);
+
+    /**
+     * @return void
+     */
+    public function remove(Example $example);
+}
