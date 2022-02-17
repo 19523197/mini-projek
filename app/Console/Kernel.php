@@ -3,9 +3,7 @@
 namespace App\Console;
 
 use Illuminate\Console\Scheduling\Schedule;
-use App\Console\Commands\MVPGeneratorCommand;
 use Laravel\Lumen\Console\Kernel as ConsoleKernel;
-use App\Console\Commands\ApplicationGeneratorCommand;
 
 class Kernel extends ConsoleKernel
 {
@@ -15,8 +13,7 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        MVPGeneratorCommand::class,
-        ApplicationGeneratorCommand::class,
+        //
     ];
 
     /**
