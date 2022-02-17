@@ -19,7 +19,7 @@
         "flipbox/lumen-generator": "^8.2",
         "laravel/lumen-framework": "^8.0",
         "uii-gateway/castle": "^1.0.0",
-        "uii-gateway/core": "^1.0.2"
+        "uii-gateway/core": "^1.0.4"
     },
     "require-dev": {
         "barryvdh/laravel-ide-helper": "^2.12",

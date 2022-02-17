@@ -1,0 +1,99 @@
+<?php
+
+namespace {{ namespace }};
+
+use App\Http\Controllers\Controller;
+use App\Http\Requests\{{ classname }}\{{ classname }}Request;
+use App\Http\Resources\{{ classname }}\{{ classname }}Resource;
+use App\Repositories\Contracts\{{ classname }}\{{ classname }}RepositoryContract;
+use App\Services\{{ classname }}\{{ classname }}Service;
+use Illuminate\Http\Request;
+
+/**
+ * This the main controller in this MVP
+ */
+class {{ classname }}Controller extends Controller
+{
+    /**
+     * Class variable
+     */
+    protected $service;
+    protected $repository;
+
+    /**
+     * First function run
+     * This will handle before the objective function is executed, the __construct function will be executed first
+     *
+     * So, if you want to run some logic first, you can add that logic in this function
+     *
+     * @param {{ classname }}Service $service
+     * @param {{ classname }}RepositoryContract $repository
+     */
+    public function __construct({{ classname }}Service $service, {{ classname }}RepositoryContract $repository)
+    {
+        $this->service = $service;
+        $this->repository = $repository;
+    }
+
+    /**
+     * Display list all data
+     *
+     * @param Request $request
+     * @return void
+     */
+    public function index(Request $request)
+    {
+        return {{ classname }}Resource::collection($this->repository->all());
+    }
+
+    /**
+     * Display detail data
+     *
+     * @param string $uuid
+     * @return void
+     */
+    public function show($uuid)
+    {
+        return {{ classname }}Resource::make($this->repository->findByUuid($uuid));
+    }
+
+    /**
+     * Create new data
+     *
+     * @param {{ classname }}Request $request
+     * @return void
+     */
+    public function create({{ classname }}Request $request)
+    {
+        $this->service->create($request->validated());
+
+        return $this->responseCreated('contoh');
+    }
+
+    /**
+     * Update data by uuid
+     *
+     * @param {{ classname }}Request $request
+     * @param string $uuid
+     * @return void
+     */
+    public function update({{ classname }}Request $request, $uuid)
+    {
+        $this->service->update($uuid, $request->validated());
+
+        return $this->responseUpdated('contoh');
+    }
+
+    /**
+     * Destroy data by uuid
+     *
+     * @param string $uuid
+     * @return void
+     */
+    public function destroy($uuid)
+    {
+        $this->service->destroy($uuid);
+
+        return $this->responseDeleted('contoh');
+    }
+}
