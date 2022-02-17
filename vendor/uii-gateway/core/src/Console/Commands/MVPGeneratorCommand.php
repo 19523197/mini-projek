@@ -10,7 +10,7 @@ class MVPGeneratorCommand extends Command
 {
     protected $signature = 'generate:mvp';
     protected $description = 'Generate new MVP feature';
-    protected $file, $teamName, $appName, $folderFileName, $directoryPath, $stubsToCreate, $nameSpacesToCreate, $lastPrefixToCreate;
+    protected $file, $teamName, $appName, $folderFileName, $directoryPath, $stubsToCreate, $nameSpacesToCreate, $lastPrefixToCreate, $publicOrPrivateApi;
     private static $lastPrefixWantsToCreate = [
         'Controller',
         'Resource',
@@ -50,6 +50,16 @@ class MVPGeneratorCommand extends Command
         'RepositoryContract' => __DIR__ . '/../../Coreplate/repository.contract.bsi',
         'DomainModel' => __DIR__ . '/../../Coreplate/domain.model.bsi',
         'ValueObject' => __DIR__ . '/../../Coreplate/value.object.bsi',
+    ];
+    private static $stubsPrivatePath = [
+        'Controller' => __DIR__ . '/../../Coreplate/controller.private.bsi',
+        'Resource' => __DIR__ . '/../../Coreplate/resource.private.bsi',
+        'Request' => __DIR__ . '/../../Coreplate/request.private.bsi',
+        'Service' => __DIR__ . '/../../Coreplate/service.private.bsi',
+        'Repository' => __DIR__ . '/../../Coreplate/repository.private.bsi',
+        'RepositoryContract' => __DIR__ . '/../../Coreplate/repository.contract.private.bsi',
+        'DomainModel' => __DIR__ . '/../../Coreplate/domain.model.private.bsi',
+        'ValueObject' => __DIR__ . '/../../Coreplate/value.object.private.bsi',
     ];
     private static $routesPath = 'routes/web.php';
     private static $routesFindToPrepend = [
@@ -140,7 +150,11 @@ class MVPGeneratorCommand extends Command
                         if ($key == 'CommentRoute') {
                             $route = $route.' '.$this->folderFileName;
                         } else if ($key !== 'NewLineStart' && $key !== 'NewLineEnd') {
-                            $route = $route."'".$this->folderFileName."\\".$this->folderFileName."@".strtolower($key)."');";
+                            if ($this->publicOrPrivateApi == 'PRIVATE') {
+                                $route = $route."'Private\\".$this->folderFileName."\\".$this->folderFileName."Controller@".strtolower($key)."');";
+                            } else {
+                                $route = $route."'".$this->folderFileName."\\".$this->folderFileName."Controller@".strtolower($key)."');";
+                            }
                         }
                         array_splice($contents, $indexOfArrayRoute, 0, $route);
                     }
@@ -164,6 +178,10 @@ class MVPGeneratorCommand extends Command
      */
     private function getDirectoryPathToCreate($directoryPath)
     {
+        if ($this->publicOrPrivateApi == 'PRIVATE') {
+            return static::$directoriesPath[$directoryPath].'/Private';
+        }
+
         return static::$directoriesPath[$directoryPath];
     }
 
@@ -175,6 +193,10 @@ class MVPGeneratorCommand extends Command
      */
     private function getNameSpaceToCreate($nameSpacePath)
     {
+        if ($this->publicOrPrivateApi == 'PRIVATE') {
+            return static::$nameSpacesPath[$nameSpacePath].'\\Private\\'.$this->folderFileName;
+        }
+
         return static::$nameSpacesPath[$nameSpacePath].'\\'.$this->folderFileName;
     }
 
@@ -197,6 +219,10 @@ class MVPGeneratorCommand extends Command
      */
     private function getStubsToCreate($stubPath)
     {
+        if ($this->publicOrPrivateApi == 'PRIVATE') {
+            return static::$stubsPrivatePath[$stubPath];
+        }
+
         return static::$stubsPath[$stubPath];
     }
 
