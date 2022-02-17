@@ -1,0 +1,23 @@
+version: "3.9"
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        IS_LOCAL: "true"
+    volumes:
+      - .:/var/www/html
+    environment:
+      IS_LOCAL: "true"
+    ports:
+      - "${WEB_HOST_PORT:-8000}:80"
+    networks:
+      default:
+        aliases:
+          - "svc-{{ teamname }}-{{ appname }}-lumen.local"
+#      svc-some-app-lumen_default:
+
+#networks:
+#  svc-some-app-lumen_default:
+#    external: true
