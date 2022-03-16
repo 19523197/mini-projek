@@ -14,7 +14,7 @@ UII Gateway Boilerplate Backend Lumen merupakan template penyusun yang memudahka
 
 Bekerja dengan baik untuk teknologi/framework Lumen dan Laravel
 
-[![Lumen Logo](https://cdn-cjido.nitrocdn.com/OWBpPGhVFQSOSTFJpSSOzqWMqrFnKYbA/assets/static/optimized/rev-87f57cb/wp-content/uploads/2020/03/laravel-lumen.png)](https://cdn-cjido.nitrocdn.com/OWBpPGhVFQSOSTFJpSSOzqWMqrFnKYbA/assets/static/optimized/rev-87f57cb/wp-content/uploads/2020/03/laravel-lumen.png)
+[![Lumen Logo](https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs/136508568/original/28a8514e644289bb301085a61e844b0fe0e8ecc4/create-rest-api-in-lumen-laravel-or-custom-php-4737.png)](https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs/136508568/original/28a8514e644289bb301085a61e844b0fe0e8ecc4/create-rest-api-in-lumen-laravel-or-custom-php-4737.png)
 
 ## Get Started
 
