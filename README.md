@@ -68,7 +68,7 @@ $app->register(UIIGateway\Castle\ServiceProvider::class);
 composer update
 ```
 
-5. Jika proses composer install sudah selesai, maka pada folder vendor sudah tersedia uii-gateway/foundation (vendor/uii-gateway)
+5. Jika proses composer install sudah selesai, maka pada folder vendor sudah tersedia **uii-gateway/foundation** dan **uii-gateway/castle** (vendor/uii-gateway)
 
 6. Selanjutnya, silakan Anda lakukan instalasi dan konfigurasi aplikasi dengan menjalankan perintah berikut, kemudian silakan isikan sesuai dengan kebutuhan aplikasi Anda.
 
@@ -81,6 +81,9 @@ php artisan generate:app
 ```sh
 php artisan generate:mvp
 ```
+
+8. Selamat coding untuk membuat sesuatu yang berharga! Semangat kakak! Untuk penggunaan Castle dapat Anda lihat pada link dokumentasi UII GATEWAY CASTLE dibawah ini.
+
 
 ## Another documentation may you need
 
