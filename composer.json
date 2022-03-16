@@ -7,19 +7,19 @@
     "repositories": [
         {
             "type": "git",
-            "url": "git@gitlab-cloud.uii.ac.id:academic/backend/castle.git"
+            "url": "git@gitlab-cloud.uii.ac.id:uii-gateway/backend/castle.git"
         },
         {
             "type": "git",
-            "url": "git@gitlab-cloud.uii.ac.id:academic/backend/core.git"
+            "url": "git@gitlab-cloud.uii.ac.id:uii-gateway/backend/foundation.git"
         }
     ],
     "require": {
         "php": "^8.0",
         "flipbox/lumen-generator": "^8.2",
         "laravel/lumen-framework": "^8.0",
-        "uii-gateway/castle": "^1.0.0",
-        "uii-gateway/core": "^1.0.4"
+        "uii-gateway/castle": "^0.0.3",
+        "uii-gateway/core": "^0.0.3"
     },
     "require-dev": {
         "barryvdh/laravel-ide-helper": "^2.12",

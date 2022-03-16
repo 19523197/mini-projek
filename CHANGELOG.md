@@ -10,6 +10,6 @@
 ### Info
 - First release beta version
 
-[0.0.2]: https://gitlab-cloud.uii.ac.id/uii-gateway/backend/svc-boilerplate-lumen/branches/compare/0.0.1...0.0.2
-[0.0.1]: https://gitlab-cloud.uii.ac.id/uii-gateway/backend/svc-boilerplate-lumen/branches/tags/0.0.1
+[0.0.2]: https://gitlab-cloud.uii.ac.id/uii-gateway/backend/svc-boilerplate-lumen/compare/0.0.1...0.0.2
+[0.0.1]: https://gitlab-cloud.uii.ac.id/uii-gateway/backend/svc-boilerplate-lumen/tags/0.0.1
 
