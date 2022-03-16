@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a8fd91e8b9bda3bc6e8f8d8f1a811eac",
+    "content-hash": "abf6cd8824fcd22dc5cfd23938f861f3",
     "packages": [
         {
             "name": "aws/aws-crt-php",
@@ -6684,16 +6684,16 @@
         },
         {
             "name": "uii-gateway/foundation",
-            "version": "0.0.3",
+            "version": "0.0.5",
             "source": {
                 "type": "git",
                 "url": "git@gitlab-cloud.uii.ac.id:uii-gateway/backend/foundation.git",
-                "reference": "e18eb974767ae5a68af6bed6474426f8c846010b"
+                "reference": "448e1fcba0838307c8588fac838696b5c841ca54"
             },
             "type": "library",
             "autoload": {
                 "psr-4": {
-                    "UIIGateway\\Core\\": "src/"
+                    "UIIGateway\\Foundation\\": "src/"
                 }
             },
             "license": [
@@ -6711,7 +6711,7 @@
                 "lumen",
                 "uii-gateway"
             ],
-            "time": "2022-03-16T16:38:04+00:00"
+            "time": "2022-03-16T17:11:52+00:00"
         },
         {
             "name": "vlucas/phpdotenv",

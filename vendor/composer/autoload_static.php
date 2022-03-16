@@ -62,7 +62,7 @@ class ComposerStaticInit948b5113d61c7266cfe9aa789f0cc7f2
         ),
         'U' => 
         array (
-            'UIIGateway\\Core\\' => 16,
+            'UIIGateway\\Foundation\\' => 22,
             'UIIGateway\\Castle\\' => 18,
         ),
         'S' => 
@@ -238,7 +238,7 @@ class ComposerStaticInit948b5113d61c7266cfe9aa789f0cc7f2
         array (
             0 => __DIR__ . '/..' . '/webmozart/assert/src',
         ),
-        'UIIGateway\\Core\\' => 
+        'UIIGateway\\Foundation\\' => 
         array (
             0 => __DIR__ . '/..' . '/uii-gateway/foundation/src',
         ),
@@ -7023,6 +7023,9 @@ class ComposerStaticInit948b5113d61c7266cfe9aa789f0cc7f2
         'UIIGateway\\Castle\\Utility\\Translation' => __DIR__ . '/..' . '/uii-gateway/castle/src/Utility/Translation.php',
         'UIIGateway\\Castle\\ValueObject\\InformasiOrganisasi' => __DIR__ . '/..' . '/uii-gateway/castle/src/ValueObject/InformasiOrganisasi.php',
         'UIIGateway\\Castle\\ValueObject\\StatusMahasiswa' => __DIR__ . '/..' . '/uii-gateway/castle/src/ValueObject/StatusMahasiswa.php',
+        'UIIGateway\\Foundation\\Console\\Commands\\ApplicationGeneratorCommand' => __DIR__ . '/..' . '/uii-gateway/foundation/src/Console/Commands/ApplicationGeneratorCommand.php',
+        'UIIGateway\\Foundation\\Console\\Commands\\MVPGeneratorCommand' => __DIR__ . '/..' . '/uii-gateway/foundation/src/Console/Commands/MVPGeneratorCommand.php',
+        'UIIGateway\\Foundation\\UIIGatewayServiceProvider' => __DIR__ . '/..' . '/uii-gateway/foundation/src/UIIGatewayServiceProvider.php',
         'UnhandledMatchError' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/UnhandledMatchError.php',
         'ValueError' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/ValueError.php',
         'Webmozart\\Assert\\Assert' => __DIR__ . '/..' . '/webmozart/assert/src/Assert.php',

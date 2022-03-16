@@ -92,7 +92,7 @@ $app->routeMiddleware([
 */
 
 $app->register(UIIGateway\Castle\ServiceProvider::class);
-$app->register(UIIGateway\Core\UIIGatewayServiceProvider::class);
+$app->register(UIIGateway\Foundation\UIIGatewayServiceProvider::class);
 
 $app->register(App\Providers\AppServiceProvider::class);
 // $app->register(App\Providers\AuthServiceProvider::class);

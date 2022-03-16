@@ -5,7 +5,7 @@
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => 'bf51b5b9ee82fb82419de4bd25387402652ef1f5',
+        'reference' => '638891dc58b81ed3dfef409e5142bb7c0197d91b',
         'name' => 'laravel/lumen',
         'dev' => true,
     ),
@@ -511,7 +511,7 @@
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => 'bf51b5b9ee82fb82419de4bd25387402652ef1f5',
+            'reference' => '638891dc58b81ed3dfef409e5142bb7c0197d91b',
             'dev_requirement' => false,
         ),
         'laravel/lumen-framework' => array(
@@ -1365,12 +1365,12 @@
             'dev_requirement' => false,
         ),
         'uii-gateway/foundation' => array(
-            'pretty_version' => '0.0.3',
-            'version' => '0.0.3.0',
+            'pretty_version' => '0.0.5',
+            'version' => '0.0.5.0',
             'type' => 'library',
             'install_path' => __DIR__ . '/../uii-gateway/foundation',
             'aliases' => array(),
-            'reference' => 'e18eb974767ae5a68af6bed6474426f8c846010b',
+            'reference' => '448e1fcba0838307c8588fac838696b5c841ca54',
             'dev_requirement' => false,
         ),
         'vlucas/phpdotenv' => array(

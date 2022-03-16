@@ -9803,19 +9803,19 @@
         },
         {
             "name": "uii-gateway/foundation",
-            "version": "0.0.3",
-            "version_normalized": "0.0.3.0",
+            "version": "0.0.5",
+            "version_normalized": "0.0.5.0",
             "source": {
                 "type": "git",
                 "url": "git@gitlab-cloud.uii.ac.id:uii-gateway/backend/foundation.git",
-                "reference": "e18eb974767ae5a68af6bed6474426f8c846010b"
+                "reference": "448e1fcba0838307c8588fac838696b5c841ca54"
             },
-            "time": "2022-03-16T16:38:04+00:00",
+            "time": "2022-03-16T17:11:52+00:00",
             "type": "library",
             "installation-source": "source",
             "autoload": {
                 "psr-4": {
-                    "UIIGateway\\Core\\": "src/"
+                    "UIIGateway\\Foundation\\": "src/"
                 }
             },
             "license": [
