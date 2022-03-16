@@ -4,11 +4,11 @@
 
 [![UII Gateway Logo](https://gateway-dev.uii.ac.id/assets/images/loader/loader.gif)](https://gateway-dev.uii.ac.id/assets/images/loader/loader.gif)
 
-UII Gateway Boilerplate Backend Lumen merupakan template/fondasi penyusun yang memudahkan Anda dalam mengembangkan aplikasi.
+UII Gateway Boilerplate Backend Lumen merupakan template penyusun yang memudahkan Anda dalam mengembangkan aplikasi.
 
 ## Features
 
-- Fondasi awal penyusun aplikasi
+- Boilerplate awal penyusun aplikasi
 
 ## Tech
 
@@ -26,31 +26,31 @@ Bacalah basmallah terlebih dahulu.
 
 - Clone dengan SSH
 ```sh
-git clone git@gitlab-cloud.uii.ac.id:academic/backend/svc-academic-boilerplate-lumen.git svc-<NAMA_TEAM>-<NAMA_APLIKASI>-lumen
+git clone git@gitlab-cloud.uii.ac.id:uii-gateway/backend/svc-boilerplate-lumen.git svc-<NAMA_TEAM>-<NAMA_APLIKASI>-lumen
 ```
 
 - Clone dengan HTTPS
 ```sh
-git clone https://gitlab-cloud.uii.ac.id/academic/backend/svc-academic-boilerplate-lumen.git svc-<NAMA_TEAM>-<NAMA_APLIKASI>-lumen
+git clone https://gitlab-cloud.uii.ac.id/uii-gateway/backend/svc-boilerplate-lumen.git svc-<NAMA_TEAM>-<NAMA_APLIKASI>-lumen
 ```
 
-2. Tambahkan repository untuk library UII Gateway Core dan UII Gateway Castle pada file **composer.json** (tambahkan pada object **repositories** dan **require**). Langkah ini bersifat opsional, jika belum ada script berikut pada **composer.json**, maka Anda wajib melakukan langkah ini, namun jika sudah ada, maka silakan Anda lanjutkan ke langkah berikutnya.
+2. Tambahkan repository untuk library UII Gateway Foundation dan UII Gateway Castle pada file **composer.json** (tambahkan pada object **repositories** dan **require**). Langkah ini bersifat opsional, jika belum ada script berikut pada **composer.json**, maka Anda wajib melakukan langkah ini, namun jika sudah ada, maka silakan Anda lanjutkan ke langkah berikutnya.
 
 ```json
 {
   "repositories": [
         {
             "type": "git",
-            "url": "git@gitlab-cloud.uii.ac.id:academic/backend/core.git"
+            "url": "git@gitlab-cloud.uii.ac.id:uii-gateway/backend/foundation.git"
         },
         {
             "type": "git",
-            "url": "git@gitlab-cloud.uii.ac.id:academic/backend/castle.git"
+            "url": "git@gitlab-cloud.uii.ac.id:uii-gateway/backend/castle.git"
         }
     ],
     "require": {
-        "uii-gateway/core": "^1.0.3",
-        "uii-gateway/castle": "^1.0.0"
+        "uii-gateway/foundation": "^0.0.1",
+        "uii-gateway/castle": "^0.0.1"
     },
 }
 ```
@@ -58,7 +58,7 @@ git clone https://gitlab-cloud.uii.ac.id/academic/backend/svc-academic-boilerpla
 3. Daftarkan kedua library diatas dengan cara menambahkan script berikut pada file **bootstrap/app.php**.  Langkah ini bersifat opsional, jika belum ada script berikut pada **bootstrap/app.php**, maka Anda wajib melakukan langkah ini, namun jika sudah ada, maka silakan Anda lanjutkan ke langkah berikutnya.
 
 ```php
-$app->register(UIIGateway\Core\UIIGatewayServiceProvider::class);
+$app->register(UIIGateway\Foundation\UIIGatewayServiceProvider::class);
 $app->register(UIIGateway\Castle\ServiceProvider::class);
 ```
 
@@ -68,7 +68,7 @@ $app->register(UIIGateway\Castle\ServiceProvider::class);
 composer update
 ```
 
-5. Jika proses composer install sudah selesai, maka pada folder vendor sudah tersedia uii-gateway/core (vendor/uii-gateway)
+5. Jika proses composer install sudah selesai, maka pada folder vendor sudah tersedia uii-gateway/foundation (vendor/uii-gateway)
 
 6. Selanjutnya, silakan Anda lakukan instalasi dan konfigurasi aplikasi dengan menjalankan perintah berikut, kemudian silakan isikan sesuai dengan kebutuhan aplikasi Anda.
 
@@ -84,10 +84,11 @@ php artisan generate:mvp
 
 ## Another documentation may you need
 
-- UII GATEWAY CASTLE => Akses dokumentasi Castle [disini](https://gitlab-cloud.uii.ac.id/academic/backend/castle).
-- UII GATEWAY Core => Akses dokumentasi Core [disini](https://gitlab-cloud.uii.ac.id/academic/backend/core).
+- UII GATEWAY CASTLE => Akses dokumentasi Castle [disini](https://gitlab-cloud.uii.ac.id/uii-gateway/backend/castle).
+- UII GATEWAY FOUNDATION => Akses dokumentasi Core [disini](https://gitlab-cloud.uii.ac.id/uii-gateway/backend/foundation).
 
 ## Maintainers
 
-* Bamasatya H <bamasatyaproject@gmail.com>
+* Bamasatya H <201232636@uii.ac.id>
 * Nabil Muhammad Firdaus <211232629@uii.ac.id>
+* Hibbatur Rizqo Widodo <21005119@uii.ac.id>
