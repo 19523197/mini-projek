@@ -1,1 +1,93 @@
-# Service Boilerplate
+# UII Gateway Boilerplate Backend Lumen
+
+#### _"Create something valuable"_
+
+[![UII Gateway Logo](https://gateway-dev.uii.ac.id/assets/images/loader/loader.gif)](https://gateway-dev.uii.ac.id/assets/images/loader/loader.gif)
+
+UII Gateway Boilerplate Backend Lumen merupakan template/fondasi penyusun yang memudahkan Anda dalam mengembangkan aplikasi.
+
+## Features
+
+- Fondasi awal penyusun aplikasi
+
+## Tech
+
+Bekerja dengan baik untuk teknologi/framework Lumen dan Laravel
+
+[![Lumen Logo](https://cdn-cjido.nitrocdn.com/OWBpPGhVFQSOSTFJpSSOzqWMqrFnKYbA/assets/static/optimized/rev-87f57cb/wp-content/uploads/2020/03/laravel-lumen.png)](https://cdn-cjido.nitrocdn.com/OWBpPGhVFQSOSTFJpSSOzqWMqrFnKYbA/assets/static/optimized/rev-87f57cb/wp-content/uploads/2020/03/laravel-lumen.png)
+
+## Get Started
+
+Bacalah basmallah terlebih dahulu.
+
+## Installation
+
+1. Silakan Anda clone repository ini terlebih dahulu. Terdapat 2 cara untuk clone, menggunakan SSH dan HTTPS, silakan pilih salah satu. Berikut script yang bisa Anda gunakan untuk clone: (PASTIKAN ANDA MENGUBAH **<NAMA_TEAM>** DAN **<NAMA_APLIKASI>** SESUAI DENGAN NAMA TIM ANDA DAN NAMA APLIKASI YANG AKAN ANDA BANGUN => Contoh: svc-academic-ras-lumen)
+
+- Clone dengan SSH
+```sh
+git clone git@gitlab-cloud.uii.ac.id:academic/backend/svc-academic-boilerplate-lumen.git svc-<NAMA_TEAM>-<NAMA_APLIKASI>-lumen
+```
+
+- Clone dengan HTTPS
+```sh
+git clone https://gitlab-cloud.uii.ac.id/academic/backend/svc-academic-boilerplate-lumen.git svc-<NAMA_TEAM>-<NAMA_APLIKASI>-lumen
+```
+
+2. Tambahkan repository untuk library UII Gateway Core dan UII Gateway Castle pada file **composer.json** (tambahkan pada object **repositories** dan **require**). Langkah ini bersifat opsional, jika belum ada script berikut pada **composer.json**, maka Anda wajib melakukan langkah ini, namun jika sudah ada, maka silakan Anda lanjutkan ke langkah berikutnya.
+
+```json
+{
+  "repositories": [
+        {
+            "type": "git",
+            "url": "git@gitlab-cloud.uii.ac.id:academic/backend/core.git"
+        },
+        {
+            "type": "git",
+            "url": "git@gitlab-cloud.uii.ac.id:academic/backend/castle.git"
+        }
+    ],
+    "require": {
+        "uii-gateway/core": "^1.0.3",
+        "uii-gateway/castle": "^1.0.0"
+    },
+}
+```
+
+3. Daftarkan kedua library diatas dengan cara menambahkan script berikut pada file **bootstrap/app.php**.  Langkah ini bersifat opsional, jika belum ada script berikut pada **bootstrap/app.php**, maka Anda wajib melakukan langkah ini, namun jika sudah ada, maka silakan Anda lanjutkan ke langkah berikutnya.
+
+```php
+$app->register(UIIGateway\Core\UIIGatewayServiceProvider::class);
+$app->register(UIIGateway\Castle\ServiceProvider::class);
+```
+
+4. Lakukan installasi/update composer dengan cara:
+ 
+```sh
+composer update
+```
+
+5. Jika proses composer install sudah selesai, maka pada folder vendor sudah tersedia uii-gateway/core (vendor/uii-gateway)
+
+6. Selanjutnya, silakan Anda lakukan instalasi dan konfigurasi aplikasi dengan menjalankan perintah berikut, kemudian silakan isikan sesuai dengan kebutuhan aplikasi Anda.
+
+```sh
+php artisan generate:app
+```
+
+7. Generate MVP flow (pattern untuk membuat fitur yang harus ada) dari fitur Anda dengan script berikut, kemudian silakan isikan sesuai dengan kebutuhan fitur yang akan Anda buat.
+
+```sh
+php artisan generate:mvp
+```
+
+## Another documentation may you need
+
+- UII GATEWAY CASTLE => Akses dokumentasi Castle [disini](https://gitlab-cloud.uii.ac.id/academic/backend/castle).
+- UII GATEWAY Core => Akses dokumentasi Core [disini](https://gitlab-cloud.uii.ac.id/academic/backend/core).
+
+## Maintainers
+
+* Bamasatya H <bamasatyaproject@gmail.com>
+* Nabil Muhammad Firdaus <211232629@uii.ac.id>
