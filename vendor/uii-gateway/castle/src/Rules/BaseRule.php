@@ -15,7 +15,9 @@ abstract class BaseRule implements ValidatorAwareRule
 
     protected function preprocessParameters($attribute, array $parameters): array
     {
-        if ($keys = ReflectionHelper::callRestrictedMethod($this->validator, 'getExplicitKeys', [$attribute])) {
+        $keys = ReflectionHelper::callRestrictedMethod($this->validator, 'getExplicitKeys', [$attribute]);
+
+        if ($keys) {
             $parameters = ReflectionHelper::callRestrictedMethod(
                 $this->validator,
                 'replaceAsterisksInParameters',

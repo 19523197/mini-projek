@@ -2,11 +2,9 @@
 
 namespace UIIGateway\Castle\Http\Middleware;
 
-use UIIGateway\Castle\Auth\OrganizationAuth;
 use Closure;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Validator;
-use UIIGateway\Castle\Repositories\OrganizationRepository;
 
 class HeaderMiddleware
 {

@@ -38,6 +38,7 @@ class ServiceProvider extends BaseServiceProvider
 
         $this->app->configure('castle');
         $this->mergeConfigFrom(__DIR__ . '/../config/castle.php', 'castle');
+        $this->loadTranslationsFrom(__DIR__ . '/../resources/lang', 'castle');
 
         $this->mergeConfig('filesystems');
 
@@ -72,6 +73,7 @@ class ServiceProvider extends BaseServiceProvider
                 __DIR__ . '/../config/castle.php' => $this->configPath('castle.php'),
                 __DIR__ . '/../config/filesystems.php' => $this->configPath('filesystems.php'),
                 __DIR__ . '/../config/ide-helper.php' => $this->configPath('ide-helper.php'),
+                __DIR__ . '/../resources/lang' => $this->langPath('vendor/castle'),
             ]);
         }
 
@@ -83,8 +85,8 @@ class ServiceProvider extends BaseServiceProvider
     {
         $this->app->singleton(OrganizationAuth::class, function (Container $app) {
             $organizations = array_filter(
-                explode(';', request()->header('x-organization', ''),
-                fn ($item) => $item)
+                explode(';', request()->header('x-organization', '')),
+                fn ($item) => $item
             );
 
             return new OrganizationAuth(
@@ -140,6 +142,14 @@ class ServiceProvider extends BaseServiceProvider
     protected function configPath($path)
     {
         return app()->basePath() . DIRECTORY_SEPARATOR . 'config' . DIRECTORY_SEPARATOR . $path;
+    }
+
+    protected function langPath($path)
+    {
+        return app()->basePath() . DIRECTORY_SEPARATOR .
+            'resources' . DIRECTORY_SEPARATOR .
+            'lang' . DIRECTORY_SEPARATOR .
+            $path;
     }
 
     protected function mergeDeep(...$args)

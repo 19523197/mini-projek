@@ -1,16 +1,23 @@
 {
     "name": "uii-gateway/castle",
     "description": "Castle, utilities for Lumen",
+    "version": "0.0.3",
     "keywords": [
         "uii-gateway",
         "lumen"
     ],
-    "homepage": "https://gitlab-cloud.uii.ac.id/academic/backend/castle",
+    "homepage": "https://gitlab-cloud.uii.ac.id/uii-gateway/backend/castle",
     "license": "MIT",
     "authors": [
         {
             "name": "Nabil Muhammad Firdaus",
             "email": "211232629@uii.ac.id"
+        }
+    ],
+    "contributors": [
+        {
+            "name": "Bamasatya Hendraprasta",
+            "email": "201232636@uii.ac.id"
         }
     ],
     "require": {
@@ -25,7 +32,8 @@
     "require-dev": {
         "mockery/mockery": "^1.3.1",
         "phpunit/phpunit": "^8.0|^9.0",
-        "symfony/var-dumper": "^5.1"
+        "symfony/var-dumper": "^5.1",
+        "laravel/lumen": "^8"
     },
     "autoload": {
         "psr-4": {
@@ -40,13 +48,6 @@
     "extra": {
         "branch-alias": {
             "dev-master": "1.x-dev"
-        },
-        "laravel": {
-            "providers": [
-                "UIIGateway\\Castle\\ServiceProvider"
-            ],
-            "aliases": {
-            }
         }
     },
     "config": {

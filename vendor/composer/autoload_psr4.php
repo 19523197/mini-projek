@@ -11,7 +11,7 @@ return array(
     'hanneskod\\classtools\\' => array($vendorDir . '/hanneskod/classtools/src'),
     'ZipStream\\' => array($vendorDir . '/maennchen/zipstream-php/src'),
     'Webmozart\\Assert\\' => array($vendorDir . '/webmozart/assert/src'),
-    'UIIGateway\\Core\\' => array($vendorDir . '/uii-gateway/core/src'),
+    'UIIGateway\\Core\\' => array($vendorDir . '/uii-gateway/foundation/src'),
     'UIIGateway\\Castle\\' => array($vendorDir . '/uii-gateway/castle/src'),
     'Symfony\\Polyfill\\Php81\\' => array($vendorDir . '/symfony/polyfill-php81'),
     'Symfony\\Polyfill\\Php80\\' => array($vendorDir . '/symfony/polyfill-php80'),

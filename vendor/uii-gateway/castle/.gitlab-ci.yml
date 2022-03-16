@@ -1,0 +1,27 @@
+stages:
+  - analysis
+  - test
+
+code_quality:
+  stage: analysis
+  image: kirschbaumdevelopment/laravel-test-runner:8.0.2
+  script:
+    - composer global require "squizlabs/php_codesniffer=*"
+#    - composer global require friendsofphp/php-cs-fixer
+    - composer global require overtrue/phplint
+    - /composer/vendor/bin/phpcs
+#    - ~/.composer/vendor/bin/php-cs-fixer fix --dry-run --stop-on-violation --diff --diff-format udiff
+    - /composer/vendor/bin/phplint
+  only:
+    - develop
+    - /^(\d+\.)(\d+\.)(\d+)$/
+
+unit_testing:
+  stage: test
+  image: kirschbaumdevelopment/laravel-test-runner:8.0.2
+  script:
+    - composer install
+    - ./vendor/bin/phpunit
+  only:
+    - develop
+    - /^(\d+\.)(\d+\.)(\d+)$/

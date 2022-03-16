@@ -7,7 +7,7 @@ use Illuminate\Support\Collection;
 
 abstract class BaseRepository
 {
-    protected abstract function toDomainModel(array $data);
+    abstract protected function toDomainModel(array $data);
 
     protected function mapToDomainModel(Collection $data)
     {
