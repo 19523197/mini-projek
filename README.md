@@ -88,7 +88,7 @@ php artisan generate:mvp
 ## Another documentation may you need
 
 - UII GATEWAY CASTLE => Akses dokumentasi Castle [disini](https://gitlab-cloud.uii.ac.id/uii-gateway/backend/castle).
-- UII GATEWAY FOUNDATION => Akses dokumentasi Core [disini](https://gitlab-cloud.uii.ac.id/uii-gateway/backend/foundation).
+- UII GATEWAY FOUNDATION => Akses dokumentasi Foundation [disini](https://gitlab-cloud.uii.ac.id/uii-gateway/backend/foundation).
 
 ## Maintainers
 
