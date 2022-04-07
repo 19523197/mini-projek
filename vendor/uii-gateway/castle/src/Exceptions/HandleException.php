@@ -4,9 +4,12 @@ namespace UIIGateway\Castle\Exceptions;
 
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Auth\AuthenticationException;
+use Illuminate\Database\DetectsLostConnections;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Response;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
 use Symfony\Component\HttpKernel\Exception\HttpExceptionInterface;
 use Throwable;
@@ -14,6 +17,8 @@ use UIIGateway\Castle\Utility\Translation;
 
 trait HandleException
 {
+    use DetectsLostConnections;
+
     /**
      * Prepare exception for api endpoint.
      *
@@ -24,7 +29,7 @@ trait HandleException
     {
         [
             $message,
-            $statusCode
+            $statusCode,
         ] = $this->getExceptionDetail($exception);
 
         $message = mb_convert_encoding($message, 'UTF-8', 'auto');
@@ -64,7 +69,35 @@ trait HandleException
 
         return [
             $statusCode,
-            $data
+            $data,
+        ];
+    }
+
+    /**
+     * Mapped the exception message and code.
+     *
+     * @param  \Throwable  $exception
+     * @return array
+     */
+    protected function getExceptionDetail(Throwable $exception)
+    {
+        if ($exception instanceof HttpExceptionInterface) {
+            return [
+                $this->getHttpExceptionMessage($exception),
+                $exception->getStatusCode(),
+            ];
+        }
+
+        $message = $exception->getMessage();
+        $message = is_string($message) && (trim($message) === '') ? get_class($exception) : $message;
+
+        if (! config('app.debug')) {
+            $message = __('http_500');
+        }
+
+        return [
+            $message,
+            500,
         ];
     }
 
@@ -95,30 +128,36 @@ trait HandleException
     }
 
     /**
-     * Mapped the exception message and code.
+     * Determine if the exception should not reported.
      *
-     * @param  \Throwable  $exception
-     * @return array
+     * @param  \Throwable  $e
+     * @return bool
      */
-    protected function getExceptionDetail(Throwable $exception)
+    protected function shouldntReport(Throwable $e)
     {
-        if ($exception instanceof HttpExceptionInterface) {
-            return [
-                $this->getHttpExceptionMessage($exception),
-                $exception->getStatusCode()
-            ];
+        $errorInQueue = ! is_null(collect($e->getTrace())
+            ->pluck('file')
+            ->first(fn ($item) => Str::endsWith($item, '/illuminate/queue/Worker.php')));
+
+        if (
+            env('IS_LOCAL') &&
+            $errorInQueue &&
+            (int) Cache::get('LOST_CONNECTION_COUNT', 0) > 1 &&
+            (
+                $this->causedByLostConnection($e) ||
+                Str::contains($e->getMessage(), [
+                    // phpcs:disable Generic.Files.LineLength.MaxExceeded
+                    'SQLSTATE[HY000] [2002] php_network_getaddresses: getaddrinfo failed: nodename nor servname provided, or not known',
+                    // phpcs:enable
+                ])
+            )
+        ) {
+            // This is just to prevent logged every lost connection when running Queue Work.
+            // For example, we may encounter annoying large logs when running worker in Docker container
+            // and we don't connect to the VPN.
+            return true;
         }
 
-        $message = $exception->getMessage();
-        $message = is_string($message) && (trim($message) === '') ? get_class($exception) : $message;
-
-        if (! config('app.debug')) {
-            $message = __('http_500');
-        }
-
-        return [
-            $message,
-            500
-        ];
+        return parent::shouldntReport($e);
     }
 }

@@ -6,7 +6,7 @@ use UIIGateway\Castle\ValueObject\InformasiOrganisasi;
 
 class Organisasi
 {
-    public InformasiOrganisasi $informasiOrganisasi;
+    protected InformasiOrganisasi $informasiOrganisasi;
 
     public function __construct(InformasiOrganisasi $informasiOrganisasi)
     {
@@ -46,5 +46,10 @@ class Organisasi
     public function namaSingkat()
     {
         return $this->informasiOrganisasi->namaSingkat;
+    }
+
+    public function getInformasiOrganisasi()
+    {
+        return $this->informasiOrganisasi;
     }
 }

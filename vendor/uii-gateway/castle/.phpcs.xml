@@ -6,20 +6,23 @@
 
     <arg name="colors"/>
 
-    <rule ref="PSR2" />
+    <rule ref="PSR12">
+        <exclude name="PSR2.ControlStructures.ControlStructureSpacing.SpacingAfterOpenBrace"/>
+        <exclude name="PSR12.Classes.ClassInstantiation.MissingParentheses"/>
+    </rule>
 
-    <rule ref="Generic.Arrays.DisallowLongArraySyntax" />
+    <rule ref="Generic.Arrays.DisallowLongArraySyntax"/>
 
     <rule ref="Generic.Files.LineLength">
         <properties>
-            <property name="lineLimit" value="110" />
-            <property name="absoluteLineLimit" value="110" />
+            <property name="lineLimit" value="110"/>
+            <property name="absoluteLineLimit" value="110"/>
         </properties>
     </rule>
 
     <rule ref="PSR2.Methods.FunctionCallSignature">
         <properties>
-            <property name="allowMultipleArguments" value="true" />
+            <property name="allowMultipleArguments" value="true"/>
         </properties>
     </rule>
 
@@ -34,13 +37,13 @@
                         dd=>NULL,
                         var_dump=>NULL,
                         sizeof=>count,
-                        delete=>unset" />
+                        delete=>unset"/>
         </properties>
     </rule>
 
     <rule ref="Squiz.PHP.CommentedOutCode">
         <properties>
-            <property name="maxPercentage" value="75" />
+            <property name="maxPercentage" value="75"/>
         </properties>
     </rule>
 </ruleset>

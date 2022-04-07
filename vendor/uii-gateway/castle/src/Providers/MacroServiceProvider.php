@@ -48,31 +48,6 @@ class MacroServiceProvider extends BaseServiceProvider
         );
 
         /**
-         * Deep merge array.
-         * Combine (instead of replace) array with the same key (if the value is an array).
-         *
-         * @param  mixed  $args,...
-         * @return array
-         */
-        Arr::macro('mergeDeep', function (...$args) {
-            $result = [];
-
-            foreach ($args as $array) {
-                foreach (Arr::wrap($array) as $key => $value) {
-                    if (is_integer($key)) {
-                        $result[] = $value;
-                    } elseif (isset($result[$key]) && is_array($result[$key]) && is_array($value)) {
-                        $result[$key] = Arr::mergeDeep($result[$key], $value);
-                    } else {
-                        $result[$key] = $value;
-                    }
-                }
-            }
-
-            return $result;
-        });
-
-        /**
          * Deep merge array to the collection.
          *
          * @param  mixed  $items

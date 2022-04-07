@@ -4,16 +4,16 @@ namespace UIIGateway\Castle;
 
 use Carbon\Carbon;
 use Carbon\CarbonImmutable;
-use Illuminate\Contracts\Container\Container;
-use Illuminate\Contracts\Validation\ValidatesWhenResolved;
 use Illuminate\Support\Arr;
 use Illuminate\Support\ServiceProvider as BaseServiceProvider;
-use UIIGateway\Castle\Auth\OrganizationAuth;
-use UIIGateway\Castle\Http\FormRequest;
+use UIIGateway\Castle\Providers\CustomDriverServiceProvider;
+use UIIGateway\Castle\Providers\FacadesServiceProvider;
+use UIIGateway\Castle\Providers\IlluminateServiceProvider;
 use UIIGateway\Castle\Providers\MacroServiceProvider;
 use UIIGateway\Castle\Providers\MiddlewareServiceProvider;
+use UIIGateway\Castle\Providers\MiscServiceProvider;
 use UIIGateway\Castle\Providers\RepositoryServiceProvider;
-use UIIGateway\Castle\Repositories\OrganizationRepository;
+use UIIGateway\Castle\ThirdParty\LaravelKafka\LaravelKafkaServiceProvider;
 use UIIGateway\Castle\Utility\ReflectionHelper;
 
 class ServiceProvider extends BaseServiceProvider
@@ -32,21 +32,21 @@ class ServiceProvider extends BaseServiceProvider
      */
     public function register()
     {
-        if (! $this->app->environment('testing')) {
-            ini_set('display_errors', 'Off');
-        }
+        $this->initRegister();
+        $this->app->register(IlluminateServiceProvider::class);
 
         $this->app->configure('castle');
         $this->mergeConfigFrom(__DIR__ . '/../config/castle.php', 'castle');
         $this->loadTranslationsFrom(__DIR__ . '/../resources/lang', 'castle');
 
-        $this->mergeConfig('filesystems');
-
         $this->app->register(MiddlewareServiceProvider::class);
-
         $this->app->register(RepositoryServiceProvider::class);
         $this->app->register(\Maatwebsite\Excel\ExcelServiceProvider::class);
         $this->app->register(\BenSampo\Enum\EnumServiceProvider::class);
+
+        if (class_exists('Junges\Kafka\Providers\LaravelKafkaServiceProvider')) {
+            $this->app->register(LaravelKafkaServiceProvider::class);
+        }
 
         if ($this->app->environment() !== 'production') {
             if (class_exists('Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider')) {
@@ -54,11 +54,10 @@ class ServiceProvider extends BaseServiceProvider
             }
         }
 
-        $this->mergeConfig('ide-helper');
-
         $this->app->register(MacroServiceProvider::class);
-
-        $this->registerFacades();
+        $this->app->register(FacadesServiceProvider::class);
+        $this->app->register(CustomDriverServiceProvider::class);
+        $this->app->register(MiscServiceProvider::class);
     }
 
     /**
@@ -68,32 +67,33 @@ class ServiceProvider extends BaseServiceProvider
      */
     public function boot()
     {
+        $this->mergeConfig('filesystems');
+        $this->mergeConfig('mail');
+        $this->mergeConfig('services');
+        $this->mergeConfig('ide-helper');
+
+        if (class_exists('Junges\Kafka\Providers\LaravelKafkaServiceProvider')) {
+            $this->mergeConfig('broadcasting', [
+                'connections' => [
+                    'kafka' => [
+                        'driver' => 'kafka',
+                    ],
+                ],
+            ]);
+        }
+
         if ($this->app->runningInConsole()) {
             $this->publishes([
                 __DIR__ . '/../config/castle.php' => $this->configPath('castle.php'),
                 __DIR__ . '/../config/filesystems.php' => $this->configPath('filesystems.php'),
+                __DIR__ . '/../config/mail.php' => $this->configPath('mail.php'),
+                __DIR__ . '/../config/services.php' => $this->configPath('services.php'),
                 __DIR__ . '/../config/ide-helper.php' => $this->configPath('ide-helper.php'),
                 __DIR__ . '/../resources/lang' => $this->langPath('vendor/castle'),
             ]);
         }
 
         $this->registerLocale();
-        $this->registerFormRequest();
-    }
-
-    protected function registerFacades()
-    {
-        $this->app->singleton(OrganizationAuth::class, function (Container $app) {
-            $organizations = array_filter(
-                explode(';', request()->header('x-organization', '')),
-                fn ($item) => $item
-            );
-
-            return new OrganizationAuth(
-                $app->make(OrganizationRepository::class),
-                $organizations
-            );
-        });
     }
 
     protected function registerLocale()
@@ -104,29 +104,50 @@ class ServiceProvider extends BaseServiceProvider
         CarbonImmutable::setLocale($locale);
     }
 
-    protected function registerFormRequest()
+    protected function initRegister()
     {
-        $this->app->afterResolving(ValidatesWhenResolved::class, function ($resolved) {
-            $resolved->validateResolved();
-        });
+        if (! $this->app->environment('testing')) {
+            ini_set('display_errors', 'Off');
+        }
 
-        $this->app->resolving(FormRequest::class, function ($request, $app) {
-            $request = FormRequest::createFrom($app['request'], $request);
+        // The only macro that place here, since we need to use this macro in this class.
+        /**
+         * Deep merge array.
+         * Combine (instead of replace) array with the same key (if the value is an array).
+         *
+         * @param  mixed  $args,...
+         * @return array
+         */
+        Arr::macro('mergeDeep', function (...$args) {
+            $result = [];
 
-            $request->setContainer($app);
+            foreach ($args as $array) {
+                foreach (Arr::wrap($array) as $key => $value) {
+                    if (is_integer($key)) {
+                        $result[] = $value;
+                    } elseif (isset($result[$key]) && is_array($result[$key]) && is_array($value)) {
+                        $result[$key] = Arr::mergeDeep($result[$key], $value);
+                    } else {
+                        $result[$key] = $value;
+                    }
+                }
+            }
+
+            return $result;
         });
     }
 
-    protected function mergeConfig($key)
+    protected function mergeConfig($key, $otherConfig = null)
     {
-        if (! $this->isConfigLoaded($key) ||
+        if (
+            ! $this->isConfigLoaded($key) ||
             ($this->isConfigLoaded($key) && ! file_exists($this->configPath($key . '.php')))
         ) {
             $config = $this->app->make('config');
 
-            $config->set($key, $this->mergeDeep(
+            $config->set($key, Arr::mergeDeep(
                 $config->get($key, []),
-                require __DIR__ . "/../config/$key.php"
+                is_array($otherConfig) ? $otherConfig : require __DIR__ . "/../config/$key.php"
             ));
         }
     }
@@ -150,24 +171,5 @@ class ServiceProvider extends BaseServiceProvider
             'resources' . DIRECTORY_SEPARATOR .
             'lang' . DIRECTORY_SEPARATOR .
             $path;
-    }
-
-    protected function mergeDeep(...$args)
-    {
-        $result = [];
-
-        foreach ($args as $array) {
-            foreach (Arr::wrap($array) as $key => $value) {
-                if (is_integer($key)) {
-                    $result[] = $value;
-                } elseif (isset($result[$key]) && is_array($result[$key]) && is_array($value)) {
-                    $result[$key] = $this->mergeDeep($result[$key], $value);
-                } else {
-                    $result[$key] = $value;
-                }
-            }
-        }
-
-        return $result;
     }
 }

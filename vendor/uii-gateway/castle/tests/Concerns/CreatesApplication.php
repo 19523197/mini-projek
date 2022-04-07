@@ -57,6 +57,7 @@ trait CreatesApplication
         $app = $this->resolveApplication();
         $this->loadWithFacade($app);
         $this->loadWithEloquent($app);
+        $this->loadConfigurations($app);
         $this->bindExceptionHandler($app);
         $this->bindConsoleKernel($app);
         $this->registerServiceProviders($app);
@@ -107,6 +108,20 @@ trait CreatesApplication
         }
 
         $app->withEloquent();
+    }
+
+    final protected function loadConfigurations(Application $app): void
+    {
+        foreach ($this->configurations() as $name) {
+            $app->configure($name);
+        }
+    }
+
+    protected function configurations(): array
+    {
+        return [
+            'app',
+        ];
     }
 
     protected function dontReportExceptions(): array

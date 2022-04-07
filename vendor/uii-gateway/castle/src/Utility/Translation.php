@@ -2,8 +2,8 @@
 
 namespace UIIGateway\Castle\Utility;
 
-use Throwable;
 use Illuminate\Support\Str;
+use Throwable;
 
 class Translation
 {

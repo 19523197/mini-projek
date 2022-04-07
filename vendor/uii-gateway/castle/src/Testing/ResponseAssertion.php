@@ -61,7 +61,7 @@ trait ResponseAssertion
 
     protected function assertValidationExceptionHas($exception, string $key)
     {
-        if (!$exception instanceof ValidationException) {
+        if (! $exception instanceof ValidationException) {
             PHPUnit::assertEquals(
                 true,
                 false,

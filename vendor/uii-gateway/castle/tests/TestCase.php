@@ -31,13 +31,14 @@ abstract class TestCase extends PHPUnit
      */
     protected function setUp(): void
     {
-        (new \Laravel\Lumen\Bootstrap\LoadEnvironmentVariables(
-            realpath(__DIR__ . '/../')
-        ))->bootstrap();
-
         $this->setUpTestEnvironment();
+    }
 
-        $this->app->register(ServiceProvider::class);
+    protected function serviceProviders(): array
+    {
+        return [
+            ServiceProvider::class
+        ];
     }
 
     /**

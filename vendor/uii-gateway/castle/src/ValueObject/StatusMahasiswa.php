@@ -6,15 +6,20 @@ use UIIGateway\Castle\Base\Enum;
 
 final class StatusMahasiswa extends Enum
 {
-    const AKTIF = 'A';
-    const NON_AKTIF = 'B';
-    const CUTI = 'C';
-    const DROP_OUT = 'D';
-    const KELUAR = 'K';
-    const LULUS = 'L';
-    const MENINGGAL = 'M';
-    const OUT = 'O';
-    const PASSING_OUT = 'P';
-    const UNDUR_DIRI = 'U';
-    const PERINGATAN_DO = '3';
+    public const AKTIF = 'A';
+    public const NON_AKTIF = 'B';
+    public const CUTI = 'C';
+    public const DROP_OUT = 'D';
+    public const KELUAR = 'K';
+    public const LULUS = 'L';
+    public const MENINGGAL = 'M';
+    public const OUT = 'O';
+    public const PASSING_OUT = 'P';
+    public const UNDUR_DIRI = 'U';
+    public const PERINGATAN_DO = '3';
+
+    public static function getLocalizationkey(): string
+    {
+        return 'castle::enums.' . StatusMahasiswa::class;
+    }
 }

@@ -7,8 +7,6 @@ use Illuminate\Support\Collection;
 
 abstract class BaseRepository
 {
-    abstract protected function toDomainModel(array $data);
-
     protected function mapToDomainModel(Collection $data)
     {
         return $data->map(fn ($item) => $this->toDomainModel(
@@ -17,4 +15,6 @@ abstract class BaseRepository
                 : (array) $item
         ));
     }
+
+    abstract protected function toDomainModel(array $data);
 }

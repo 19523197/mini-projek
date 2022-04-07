@@ -2,9 +2,9 @@
 
 namespace UIIGateway\Castle\Rules;
 
-use UIIGateway\Castle\Utility\ReflectionHelper;
 use Illuminate\Contracts\Validation\ValidatorAwareRule;
 use Illuminate\Support\Str;
+use UIIGateway\Castle\Utility\ReflectionHelper;
 
 abstract class BaseRule implements ValidatorAwareRule
 {
