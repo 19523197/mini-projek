@@ -4,21 +4,21 @@ stages:
 
 code_quality:
   stage: analysis
-  image: kirschbaumdevelopment/laravel-test-runner:8.0.2
+  image: asia.gcr.io/uii-cloud-project/uii-gateway/backend/docker-php/php:8.0
   script:
     - composer global require "squizlabs/php_codesniffer=*"
 #    - composer global require friendsofphp/php-cs-fixer
     - composer global require overtrue/phplint
-    - /composer/vendor/bin/phpcs
-#    - ~/.composer/vendor/bin/php-cs-fixer fix --dry-run --stop-on-violation --diff --diff-format udiff
-    - /composer/vendor/bin/phplint
+    - phpcs
+#    - php-cs-fixer fix --dry-run --stop-on-violation --diff --diff-format udiff
+    - phplint
   only:
     - develop
     - /^(\d+\.)(\d+\.)(\d+)$/
 
 unit_testing:
   stage: test
-  image: kirschbaumdevelopment/laravel-test-runner:8.0.2
+  image: asia.gcr.io/uii-cloud-project/uii-gateway/backend/docker-php/php:8.0
   script:
     - composer install
     - ./vendor/bin/phpunit

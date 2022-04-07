@@ -42,7 +42,7 @@ git clone https://gitlab-cloud.uii.ac.id/uii-gateway/backend/svc-boilerplate-lum
         }
     ],
     "require": {
-        "uii-gateway/foundation": "^0.0.9",
+        "uii-gateway/foundation": "^0.0.11",
         "uii-gateway/castle": "^1.0.0"
     }
 }

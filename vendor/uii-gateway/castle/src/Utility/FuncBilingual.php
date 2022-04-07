@@ -20,7 +20,7 @@ class FuncBilingual
             $this->language = $lang;
         } else {
             $this->language = 'id';
-        };
+        }
     }
 
     public function translate($sentence)

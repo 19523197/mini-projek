@@ -21,16 +21,6 @@ class OrganizationAuth
         $this->organizationCodes = $organizationCodes;
     }
 
-    public function organizations()
-    {
-        if (! isset($this->organizations)) {
-            $this->organizations = $this->organizationRepository
-                ->getOrganisasiByKdOrganisasi($this->organizationCodes);
-        }
-
-        return $this->organizations;
-    }
-
     public function organizationsAndChildren()
     {
         if (! isset($this->organizationsAndChildren)) {
@@ -41,5 +31,15 @@ class OrganizationAuth
         }
 
         return $this->organizationsAndChildren;
+    }
+
+    public function organizations()
+    {
+        if (! isset($this->organizations)) {
+            $this->organizations = $this->organizationRepository
+                ->getOrganisasiByKdOrganisasi($this->organizationCodes);
+        }
+
+        return $this->organizations;
     }
 }

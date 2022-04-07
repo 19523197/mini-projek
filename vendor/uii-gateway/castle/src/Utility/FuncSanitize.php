@@ -16,13 +16,10 @@ trait FuncSanitize
                 $type = gettype($value);
                 switch ($type) {
                     case 'boolean':
-                        $value = (boolean) htmlentities($value);
+                        $value = (bool) htmlentities($value);
                         break;
                     case 'integer':
                         $value = (int) htmlentities($value);
-                        break;
-                    case 'string':
-                        $value = (string) htmlentities($value);
                         break;
                     case 'double':
                         $value = (double) htmlentities($value);
@@ -53,13 +50,10 @@ trait FuncSanitize
                 $type = gettype($value);
                 switch ($type) {
                     case 'boolean':
-                        $value = (boolean) html_entity_decode($value);
+                        $value = (bool) html_entity_decode($value);
                         break;
                     case 'integer':
                         $value = (int) html_entity_decode($value);
-                        break;
-                    case 'string':
-                        $value = (string) html_entity_decode($value);
                         break;
                     case 'double':
                         $value = (double) html_entity_decode($value);

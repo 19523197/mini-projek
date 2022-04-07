@@ -1,31 +1,31 @@
 # UII Gateway Castle
 
-#### _"Kumpulan utilitas untuk microservice berbasis Lumen di BSI UII"_
+#### _Kumpulan utilitas untuk microservice berbasis Lumen di BSI UII_
 
 [![UII Gateway Logo](https://gateway-dev.uii.ac.id/assets/images/loader/loader.gif)](https://gateway-dev.uii.ac.id/assets/images/loader/loader.gif)
 
-UII Gateway Castle Lumen merupakan package/library yang menyimpan berbagai utilitas untuk memudahkan pekerjaan Anda dalam membangun aplikasi/website menggunakan framework Lumen.
+UII Gateway Castle Lumen merupakan _package_ yang menyimpan berbagai utilitas untuk memudahkan pekerjaan Anda dalam membangun servis menggunakan framework Lumen.
 
-## Features
+## Fitur
 
 - [Sanitize](https://gitlab-cloud.uii.ac.id/uii-gateway/backend/castle/blob/develop/documentation/Sanitize.md)
 - [Bilingual](https://gitlab-cloud.uii.ac.id/uii-gateway/backend/castle/blob/develop/documentation/Bilingual.md)
 
-## Tech
+## Teknologi
 
 Bekerja dengan baik untuk framework Lumen
 
-[![Lumen Logo](https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs/136508568/original/28a8514e644289bb301085a61e844b0fe0e8ecc4/create-rest-api-in-lumen-laravel-or-custom-php-4737.png)](https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs/136508568/original/28a8514e644289bb301085a61e844b0fe0e8ecc4/create-rest-api-in-lumen-laravel-or-custom-php-4737.png)
+[![Lumen Logo](https://gitlab-cloud.uii.ac.id/uii-gateway/backend/castle/raw/develop/art/lumen.png)](https://gitlab-cloud.uii.ac.id/uii-gateway/backend/castle)
 
-## Get Started
+## Memulai
 
-Untuk memulai menggunakan library ini, pastikan Anda menggunakan package/library ini hanya untuk aplikasi dengan environment yang ada di BSI (Package/library ini mungkin tidak bisa berjalan jika berbeda environment). 
+Untuk memulai menggunakan _package_ ini, pastikan Anda menggunakan _package_ ini hanya untuk aplikasi dengan _environment_ yang ada di BSI (_package_ ini mungkin tidak bisa berjalan jika berbeda _environment_). 
 
-Pastikan Anda sudah melakukan clone repository [boilerplate lumen BSI.](https://gitlab-cloud.uii.ac.id/uii-gateway/backend/svc-boilerplate-lumen) Jika Anda belum clone repositori boilerplate tersebut, silakan ikuti langkah installasi boilerplate tersebut sesuai dengan [dokumentasi cara instal boilerplate.](https://gitlab-cloud.uii.ac.id/uii-gateway/backend/svc-boilerplate-lumen/blob/develop/README.md)
+Pastikan Anda sudah melakukan instalasi [boilerplate lumen BSI](https://gitlab-cloud.uii.ac.id/uii-gateway/backend/svc-academic-boilerplate-lumen). Jika Anda belum melakukan instalasi boilerplate tersebut, silakan ikuti langkah instalasi boilerplate tersebut sesuai dengan [dokumentasi instalasi boilerplate](https://gitlab-cloud.uii.ac.id/uii-gateway/backend/svc-academic-boilerplate-lumen/blob/develop/README.md).
 
-Perlu diperhatikan, packages ini akan berjalan lancar untuk existing project. Jika Anda ingin mengimplementasikan pada project yang sudah berjalan, diperlukan konfigurasi khusus agar packages ini dapat berjalan dengan lancar.
+Perlu diperhatikan, _package_ ini akan berjalan lancar untuk _project_ baru. Jika Anda ingin menggunakan pada _existing project_, diperlukan konfigurasi khusus agar _package_ ini dapat berjalan dengan baik.
 
-## Installation
+## Instalasi
 
 1. Pastikan Anda sudah membuka folder boilerplate (yang telah Anda clone) pada text editor milik Anda.
 
@@ -39,7 +39,7 @@ Perlu diperhatikan, packages ini akan berjalan lancar untuk existing project. Ji
         }
     ],
     "require": {
-        "uii-gateway/castle": "^0.0.1"
+        "uii-gateway/castle": "^1.0.0"
     },
 }
 ```
@@ -49,24 +49,23 @@ Perlu diperhatikan, packages ini akan berjalan lancar untuk existing project. Ji
 $app->register(UIIGateway\Castle\ServiceProvider::class);
 ``` 
 
-4. Lakukan installasi/update composer dengan cara
+4. Lakukan installasi composer dengan cara
 ```sh
 composer update
 ```
 
 5. Jika proses composer update sudah selesai, maka pada folder vendor sudah tersedia **uii-gateway/castle** (vendor/uii-gateway)
 
-## How to use
+## Cara Penggunaan
 
-Pada package/library ini beberapa shared utility yang dapat Anda manfaatkan. Untuk saat ini, ketersediaan utilitas tersebut seperti yang dapat Anda lihat pada list Features baru terdapat:
+Pada _package_ ini beberapa shared utility yang dapat Anda manfaatkan. Untuk saat ini, ketersediaan utilitas tersebut seperti yang dapat Anda lihat pada list fitur:
 
 - Sanitize. [(Lihat cara penggunaannya disini.)](https://gitlab-cloud.uii.ac.id/uii-gateway/backend/castle/blob/develop/documentation/Sanitize.md)
 - Bilingual. [(Lihat cara penggunaannya disini.)](https://gitlab-cloud.uii.ac.id/uii-gateway/backend/castle/blob/develop/documentation/Bilingual.md)
 
-Untuk menggunakan masing masing utilitas tersebut silakan baca dokumentasi yang sudah disediakan. Klik saja pada features diatas yang ingin Anda gunakan utilitasnya.
+Untuk menggunakan masing masing utilitas tersebut, silakan baca dokumentasi yang sudah disediakan. Klik saja pada masing-masing fitur di atas.
 
-## Maintainers
+## Pengembang
 
-* Bamasatya H <201232636@uii.ac.id>
 * Nabil Muhammad Firdaus <211232629@uii.ac.id>
-* Hibbatur Rizqo Widodo <21005119@uii.ac.id>
+* Bamasatya H <bamasatyaproject@gmail.com>

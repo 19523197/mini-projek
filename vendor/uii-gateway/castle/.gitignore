@@ -1,4 +1,5 @@
+storage/
 vendor/
-.env
 .phpunit.result.cache
 phplint.cache
+.DS_Store

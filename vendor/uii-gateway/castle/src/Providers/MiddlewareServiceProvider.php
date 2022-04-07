@@ -15,7 +15,7 @@ class MiddlewareServiceProvider extends ServiceProvider
     protected $app;
 
     /**
-     * Bootstrap the application services.
+     * Bootstrap any application services.
      *
      * @return void
      */
