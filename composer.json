@@ -49,6 +49,10 @@
     "scripts": {
         "post-root-package-install": [
             "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+        ],
+        "post-autoload-dump":  [
+            "rm -rf vendor/uii-gateway/castle/.git",
+            "rm -rf vendor/uii-gateway/foundation/.git"
         ]
     }
 }
