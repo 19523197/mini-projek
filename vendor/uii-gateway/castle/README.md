@@ -6,22 +6,11 @@
 
 UII Gateway Castle Lumen merupakan _package_ yang menyimpan berbagai utilitas untuk memudahkan pekerjaan Anda dalam membangun servis menggunakan framework Lumen.
 
-## Fitur
-
-- [Sanitize](https://gitlab-cloud.uii.ac.id/uii-gateway/backend/castle/blob/develop/documentation/Sanitize.md)
-- [Bilingual](https://gitlab-cloud.uii.ac.id/uii-gateway/backend/castle/blob/develop/documentation/Bilingual.md)
-
-## Teknologi
-
-Bekerja dengan baik untuk framework Lumen
-
-[![Lumen Logo](https://gitlab-cloud.uii.ac.id/uii-gateway/backend/castle/raw/develop/art/lumen.png)](https://gitlab-cloud.uii.ac.id/uii-gateway/backend/castle)
-
 ## Memulai
 
 Untuk memulai menggunakan _package_ ini, pastikan Anda menggunakan _package_ ini hanya untuk aplikasi dengan _environment_ yang ada di BSI (_package_ ini mungkin tidak bisa berjalan jika berbeda _environment_). 
 
-Pastikan Anda sudah melakukan instalasi [boilerplate lumen BSI](https://gitlab-cloud.uii.ac.id/uii-gateway/backend/svc-academic-boilerplate-lumen). Jika Anda belum melakukan instalasi boilerplate tersebut, silakan ikuti langkah instalasi boilerplate tersebut sesuai dengan [dokumentasi instalasi boilerplate](https://gitlab-cloud.uii.ac.id/uii-gateway/backend/svc-academic-boilerplate-lumen/blob/develop/README.md).
+Pastikan Anda sudah melakukan instalasi [boilerplate lumen BSI](https://gitlab-cloud.uii.ac.id/uii-gateway/backend/svc-boilerplate-lumen). Jika Anda belum melakukan instalasi boilerplate tersebut, silakan ikuti langkah instalasi boilerplate tersebut sesuai dengan [dokumentasi instalasi boilerplate](https://gitlab-cloud.uii.ac.id/uii-gateway/backend/svc-boilerplate-lumen/blob/develop/README.md).
 
 Perlu diperhatikan, _package_ ini akan berjalan lancar untuk _project_ baru. Jika Anda ingin menggunakan pada _existing project_, diperlukan konfigurasi khusus agar _package_ ini dapat berjalan dengan baik.
 

@@ -28,10 +28,17 @@ abstract class BaseRule implements ValidatorAwareRule
         return $parameters;
     }
 
-    protected function formatMessage(array $replaces = [])
+    protected function getValidationMessage(array $replaces = [], ?string $namespace = 'castle')
     {
-        foreach ($replaces as $key => $replace) {
-            $replaces[$key] = $this->validator->getDisplayableAttribute($replace);
+        if ($namespace) {
+            $key = $namespace . '::validation.' . Str::snake(class_basename($this));
+            $trans = trans($key, $replaces);
+
+            if ($trans !== $key) {
+                return $trans;
+            }
+
+            // fallback to the main validation translation.
         }
 
         return trans('validation.' . Str::snake(class_basename($this)), $replaces);

@@ -56,5 +56,17 @@ class MacroServiceProvider extends BaseServiceProvider
         Collection::macro('mergeDeep', function ($items) {
             return new static(Arr::mergeDeep($this->items, $this->getArrayableItems($items)));
         });
+
+        /**
+         * Pick given keys from the collection.
+         *
+         * @param  array  $keys
+         * @return \Illuminate\Support\Collection
+         */
+        Collection::macro('pick', function (array $keys) {
+            return $this->map(function ($item) use ($keys) {
+                return Arr::only($this->getArrayableItems($item), $keys);
+            });
+        });
     }
 }

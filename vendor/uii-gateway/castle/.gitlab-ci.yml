@@ -2,9 +2,12 @@ stages:
   - analysis
   - test
 
+variables:
+  GIT_SSL_NO_VERIFY: "true"
+
 code_quality:
   stage: analysis
-  image: asia.gcr.io/uii-cloud-project/uii-gateway/backend/docker-php/php:8.0
+  image: asia.gcr.io/uii-cloud-project/uii-gateway/backend/docker-php/php:8.0-2
   script:
     - composer global require "squizlabs/php_codesniffer=*"
 #    - composer global require friendsofphp/php-cs-fixer
@@ -13,15 +16,17 @@ code_quality:
 #    - php-cs-fixer fix --dry-run --stop-on-violation --diff --diff-format udiff
     - phplint
   only:
-    - develop
+    - 1.x
+    - 2.x
     - /^(\d+\.)(\d+\.)(\d+)$/
 
 unit_testing:
   stage: test
-  image: asia.gcr.io/uii-cloud-project/uii-gateway/backend/docker-php/php:8.0
+  image: asia.gcr.io/uii-cloud-project/uii-gateway/backend/docker-php/php:8.0-2
   script:
     - composer install
     - ./vendor/bin/phpunit
   only:
-    - develop
+    - 1.x
+    - 2.x
     - /^(\d+\.)(\d+\.)(\d+)$/

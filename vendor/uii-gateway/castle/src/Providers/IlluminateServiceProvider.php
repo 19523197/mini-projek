@@ -2,11 +2,13 @@
 
 namespace UIIGateway\Castle\Providers;
 
+use Illuminate\Contracts\Support\DeferrableProvider;
 use Illuminate\Contracts\Validation\ValidatesWhenResolved;
+use Illuminate\Notifications\ChannelManager;
 use Illuminate\Support\ServiceProvider as BaseServiceProvider;
 use UIIGateway\Castle\Http\FormRequest;
 
-class IlluminateServiceProvider extends BaseServiceProvider
+class IlluminateServiceProvider extends BaseServiceProvider implements DeferrableProvider
 {
     /**
      * The application instance.
@@ -71,5 +73,16 @@ class IlluminateServiceProvider extends BaseServiceProvider
         if (! class_exists('Mail')) {
             class_alias(\Illuminate\Support\Facades\Mail::class, 'Mail');
         }
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function provides()
+    {
+        return [
+            ChannelManager::class,
+            'mail.manager',
+        ];
     }
 }

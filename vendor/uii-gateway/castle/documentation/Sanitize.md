@@ -6,7 +6,7 @@ Sanitize merupakan utilitas yang memudahkan Anda dalam proses sanitasi/filter da
 
 ### Get Started
 
-Pastikan Anda sudah menambahkan UII Gateway Castle kedalam project Anda melalui **composer.json**. Jika belum, silakan baca dokumentasi tentang [cara menambahkan UII Gateway Castle](https://gitlab-cloud.uii.ac.id/academic/backend/castle/blob/master/README.md) terlebih dahulu.
+Pastikan Anda sudah menambahkan UII Gateway Castle kedalam project Anda melalui **composer.json**. Jika belum, silakan baca dokumentasi tentang [cara menambahkan UII Gateway Castle](https://gitlab-cloud.uii.ac.id/uii-gateway/backend/castle/blob/master/README.md) terlebih dahulu.
 
 ### How To Use
 

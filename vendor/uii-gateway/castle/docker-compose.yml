@@ -4,6 +4,8 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+      args:
+        IS_LOCAL: "true"
     volumes:
       - .:/var/www/html
     ports:

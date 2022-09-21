@@ -20,7 +20,7 @@ class TitleCase
      */
     protected string $titleCased;
 
-    protected static array $keepLower = [
+    protected array $keepLower = [
         'id' => [
             'yang', 'serta', 'dan', 'dengan', 'atau', 'untuk',
         ],
@@ -29,14 +29,19 @@ class TitleCase
     public function __construct(string $words, $locale = 'id')
     {
         $this->original = $words;
-        $this->titleCased = self::convert($words, $locale);
+        $this->titleCased = $this->transform($words, $locale);
     }
 
     public static function convert(string $words, $locale = 'id'): string
     {
+        return (string) new static($words, $locale);
+    }
+
+    public function transform(string $words, $locale = 'id'): string
+    {
         return collect(explode(' ', Str::title($words)))
             ->map(function (string $word, $key) use ($locale) {
-                $keepWords = static::$keepLower[$locale] ?? [];
+                $keepWords = $this->keepLower[$locale] ?? [];
 
                 if ($key !== 0 && in_array(mb_strtolower($word), $keepWords)) {
                     // we keep words in keepWords as lowercase,

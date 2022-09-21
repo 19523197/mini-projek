@@ -8,17 +8,11 @@ use Illuminate\Support\Arr;
 
 class RequiredIfOtherEmpty extends BaseRule implements Rule, ImplicitRule
 {
-    protected $other;
-
-    protected $trim;
-
-    protected $bypass;
-
-    public function __construct(string $other, bool $trim = true, bool $bypass = false)
-    {
-        $this->other = $other;
-        $this->trim = $trim;
-        $this->bypass = $bypass;
+    public function __construct(
+        protected string $other,
+        protected bool $trim = true,
+        protected bool $bypass = false
+    ) {
     }
 
     public function passes($attribute, $value)
@@ -40,6 +34,8 @@ class RequiredIfOtherEmpty extends BaseRule implements Rule, ImplicitRule
 
     public function message()
     {
-        return $this->formatMessage(['other' => $this->other]);
+        return $this->getValidationMessage([
+            'other' => $this->validator->getDisplayableAttribute($this->other),
+        ]);
     }
 }

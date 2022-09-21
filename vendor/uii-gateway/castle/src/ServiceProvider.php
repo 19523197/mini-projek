@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use Carbon\CarbonImmutable;
 use Illuminate\Support\Arr;
 use Illuminate\Support\ServiceProvider as BaseServiceProvider;
+use UIIGateway\Castle\Providers\CommandServiceProvider;
 use UIIGateway\Castle\Providers\CustomDriverServiceProvider;
 use UIIGateway\Castle\Providers\FacadesServiceProvider;
 use UIIGateway\Castle\Providers\IlluminateServiceProvider;
@@ -13,6 +14,7 @@ use UIIGateway\Castle\Providers\MacroServiceProvider;
 use UIIGateway\Castle\Providers\MiddlewareServiceProvider;
 use UIIGateway\Castle\Providers\MiscServiceProvider;
 use UIIGateway\Castle\Providers\RepositoryServiceProvider;
+use UIIGateway\Castle\Publishing\PublishServiceProvider;
 use UIIGateway\Castle\ThirdParty\LaravelKafka\LaravelKafkaServiceProvider;
 use UIIGateway\Castle\Utility\ReflectionHelper;
 
@@ -33,7 +35,9 @@ class ServiceProvider extends BaseServiceProvider
     public function register()
     {
         $this->initRegister();
+
         $this->app->register(IlluminateServiceProvider::class);
+        $this->app->register(PublishServiceProvider::class);
 
         $this->app->configure('castle');
         $this->mergeConfigFrom(__DIR__ . '/../config/castle.php', 'castle');
@@ -56,6 +60,7 @@ class ServiceProvider extends BaseServiceProvider
 
         $this->app->register(MacroServiceProvider::class);
         $this->app->register(FacadesServiceProvider::class);
+        $this->app->register(CommandServiceProvider::class);
         $this->app->register(CustomDriverServiceProvider::class);
         $this->app->register(MiscServiceProvider::class);
     }
@@ -68,19 +73,10 @@ class ServiceProvider extends BaseServiceProvider
     public function boot()
     {
         $this->mergeConfig('filesystems');
+        $this->mergeConfig('publishing');
         $this->mergeConfig('mail');
         $this->mergeConfig('services');
         $this->mergeConfig('ide-helper');
-
-        if (class_exists('Junges\Kafka\Providers\LaravelKafkaServiceProvider')) {
-            $this->mergeConfig('broadcasting', [
-                'connections' => [
-                    'kafka' => [
-                        'driver' => 'kafka',
-                    ],
-                ],
-            ]);
-        }
 
         if ($this->app->runningInConsole()) {
             $this->publishes([
@@ -89,8 +85,11 @@ class ServiceProvider extends BaseServiceProvider
                 __DIR__ . '/../config/mail.php' => $this->configPath('mail.php'),
                 __DIR__ . '/../config/services.php' => $this->configPath('services.php'),
                 __DIR__ . '/../config/ide-helper.php' => $this->configPath('ide-helper.php'),
+            ], 'config');
+
+            $this->publishes([
                 __DIR__ . '/../resources/lang' => $this->langPath('vendor/castle'),
-            ]);
+            ], 'translations');
         }
 
         $this->registerLocale();
@@ -143,6 +142,7 @@ class ServiceProvider extends BaseServiceProvider
             ! $this->isConfigLoaded($key) ||
             ($this->isConfigLoaded($key) && ! file_exists($this->configPath($key . '.php')))
         ) {
+            $this->app->configure($key);
             $config = $this->app->make('config');
 
             $config->set($key, Arr::mergeDeep(

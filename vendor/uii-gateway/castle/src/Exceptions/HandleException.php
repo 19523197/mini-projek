@@ -63,7 +63,7 @@ trait HandleException
             ]);
             $statusCode = 400;
         } elseif ($exception instanceof EntityNotFoundException) {
-            $statusCode = 404;
+            $statusCode = 400;
             $data['message'] = $data['info'] = $exception->getMessage();
         }
 
@@ -139,10 +139,11 @@ trait HandleException
             ->pluck('file')
             ->first(fn ($item) => Str::endsWith($item, '/illuminate/queue/Worker.php')));
 
+        $lostConnectionTolerant = 3;
+
         if (
-            env('IS_LOCAL') &&
             $errorInQueue &&
-            (int) Cache::get('LOST_CONNECTION_COUNT', 0) > 1 &&
+            (int) Cache::get('LOST_CONNECTION_COUNT', 0) > $lostConnectionTolerant &&
             (
                 $this->causedByLostConnection($e) ||
                 Str::contains($e->getMessage(), [

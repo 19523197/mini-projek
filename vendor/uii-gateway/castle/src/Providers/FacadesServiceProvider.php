@@ -3,11 +3,13 @@
 namespace UIIGateway\Castle\Providers;
 
 use Illuminate\Contracts\Container\Container;
+use Illuminate\Contracts\Support\DeferrableProvider;
 use Illuminate\Support\ServiceProvider as BaseServiceProvider;
+use UIIGateway\Castle\Auth\Auth;
 use UIIGateway\Castle\Auth\OrganizationAuth;
 use UIIGateway\Castle\Repositories\OrganizationRepository;
 
-class FacadesServiceProvider extends BaseServiceProvider
+class FacadesServiceProvider extends BaseServiceProvider implements DeferrableProvider
 {
     /**
      * The application instance.
@@ -34,5 +36,20 @@ class FacadesServiceProvider extends BaseServiceProvider
                 $organizations
             );
         });
+
+        $this->app->singleton(Auth::class, function (Container $app) {
+            return new Auth($app->make('request'));
+        });
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function provides()
+    {
+        return [
+            OrganizationAuth::class,
+            Auth::class,
+        ];
     }
 }

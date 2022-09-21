@@ -3,12 +3,14 @@
 namespace UIIGateway\Castle\Tests;
 
 use UIIGateway\Castle\ServiceProvider;
+use UIIGateway\Castle\Testing\TestingMixins;
 use UIIGateway\Castle\Tests\Concerns\CreatesApplication;
 use PHPUnit\Framework\TestCase as PHPUnit;
 
 abstract class TestCase extends PHPUnit
 {
     use CreatesApplication;
+    use TestingMixins;
 
     /**
      * The application instance.
@@ -49,5 +51,10 @@ abstract class TestCase extends PHPUnit
     protected function tearDown(): void
     {
         $this->tearDownTestEnvironment();
+    }
+
+    protected function fixturesPath($path)
+    {
+        return realpath(__DIR__ . '/fixtures/' . ltrim($path, '/'));
     }
 }

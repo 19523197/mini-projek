@@ -94,7 +94,7 @@ final class DriverManager
      *
      * @var string[]
      */
-    private static $driverSchemeAliases = [
+    private static array $driverSchemeAliases = [
         'db2'        => 'ibm_db2',
         'mssql'      => 'pdo_sqlsrv',
         'mysql'      => 'pdo_mysql',
@@ -145,9 +145,8 @@ final class DriverManager
      * <b>driverClass</b>:
      * The driver class to use.
      *
-     * @param array<string,mixed> $params
-     * @param Configuration|null  $config       The configuration to use.
-     * @param EventManager|null   $eventManager The event manager to use.
+     * @param Configuration|null $config       The configuration to use.
+     * @param EventManager|null  $eventManager The event manager to use.
      * @psalm-param array{
      *     charset?: string,
      *     dbname?: string,
@@ -172,7 +171,6 @@ final class DriverManager
      *     user?: string,
      *     wrapperClass?: class-string<T>,
      * } $params
-     * @phpstan-param array<string,mixed> $params
      *
      * @psalm-return ($params is array{wrapperClass:mixed} ? T : Connection)
      *
@@ -186,15 +184,9 @@ final class DriverManager
         ?EventManager $eventManager = null
     ): Connection {
         // create default config and event manager, if not set
-        if ($config === null) {
-            $config = new Configuration();
-        }
-
-        if ($eventManager === null) {
-            $eventManager = new EventManager();
-        }
-
-        $params = self::parseDatabaseUrl($params);
+        $config       ??= new Configuration();
+        $eventManager ??= new EventManager();
+        $params         = self::parseDatabaseUrl($params);
 
         // URL support for PrimaryReplicaConnection
         if (isset($params['primary'])) {

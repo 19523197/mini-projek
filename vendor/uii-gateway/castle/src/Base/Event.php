@@ -34,14 +34,18 @@ abstract class Event
         $this->publishedAt = Carbon::now()->toDateTimeString();
     }
 
-    protected function buildPayload(array $data): array
+    public function publishWith()
     {
-        return array_merge([
+        return [
             'topic' => $this->topic ?? null,
-            'requestHeaders' => $this->requestHeaders,
             'publisherScope' => $this->publisherScope,
             'publisher' => $this->publisher,
             'publishedAt' => $this->publishedAt,
-        ], $data);
+        ];
+    }
+
+    public function publishAs()
+    {
+        return class_basename($this);
     }
 }

@@ -25,7 +25,7 @@ abstract class Notification extends BaseNotification
         $this->publishedAt = Carbon::now()->toDateTimeString();
     }
 
-    final public function broadcastWith()
+    final public function publishWith()
     {
         return [
             'publisherScope' => $this->publisherScope,

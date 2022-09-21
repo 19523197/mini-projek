@@ -3,3 +3,4 @@ vendor/
 .phpunit.result.cache
 phplint.cache
 .DS_Store
+phpunit.xml

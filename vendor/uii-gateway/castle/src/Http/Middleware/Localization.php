@@ -4,8 +4,8 @@ namespace UIIGateway\Castle\Http\Middleware;
 
 use Carbon\Carbon;
 use Closure;
-use Exception;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Log;
 
 class Localization
 {
@@ -24,7 +24,9 @@ class Localization
 
         $this->validateLocale($locale);
 
-        app()->setLocale($locale);
+        if (! is_null($locale)) {
+            app()->setLocale($locale);
+        }
 
         return $next($request);
     }
@@ -58,10 +60,12 @@ class Localization
         return null;
     }
 
-    protected function validateLocale($locale)
+    protected function validateLocale(&$locale)
     {
         if (is_null($locale)) {
-            throw new Exception('Language is not available.');
+            Log::error('Language is not available.');
+
+            return;
         }
 
         // detect valid locale via Carbon translations.
@@ -69,7 +73,9 @@ class Localization
         $result = Carbon::setLocale($locale);
 
         if (! $result) {
-            throw new Exception("Language '{$locale}' is invalid.");
+            Log::error("Language '{$locale}' is invalid.");
+
+            $locale = null;
         }
     }
 }

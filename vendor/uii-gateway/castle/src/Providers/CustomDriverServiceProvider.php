@@ -2,12 +2,12 @@
 
 namespace UIIGateway\Castle\Providers;
 
-use Illuminate\Support\Facades\Broadcast;
+use Illuminate\Contracts\Queue\Factory as QueueFactoryContract;
 use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\ServiceProvider as BaseServiceProvider;
 use Laravel\Lumen\Application;
-use UIIGateway\Castle\Broadcasting\KafkaBroadcaster;
-use UIIGateway\Castle\Notifications\KafkaBroadcastChannel;
+use UIIGateway\Castle\Events\Dispatcher;
+use UIIGateway\Castle\Notifications\PubcastChannel;
 
 class CustomDriverServiceProvider extends BaseServiceProvider
 {
@@ -34,14 +34,16 @@ class CustomDriverServiceProvider extends BaseServiceProvider
                 \Junges\Kafka\Kafka::class,
                 \Junges\Kafka\Contracts\CanPublishMessagesToKafka::class
             );
-
-            Broadcast::extend('kafka', function (Application $app) {
-                return $app->make(KafkaBroadcaster::class);
-            });
         }
 
-        Notification::extend('kafka_broadcast', function (Application $app) {
-            return $app->make(KafkaBroadcastChannel::class);
+        Notification::extend('pubcast', function (Application $app) {
+            return $app->make(PubcastChannel::class);
+        });
+
+        $this->app->singleton('events', function ($app) {
+            return (new Dispatcher($app))->setQueueResolver(function () use ($app) {
+                return $app->make(QueueFactoryContract::class);
+            });
         });
     }
 }

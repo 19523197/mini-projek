@@ -20,4 +20,12 @@ class EntityNotFoundException extends RuntimeException
             'entity' => Translation::transEntity($entity),
         ])));
     }
+
+    public static function withMessage(string $message)
+    {
+        $exception = new static('');
+        $exception->message = $message;
+
+        return $exception;
+    }
 }

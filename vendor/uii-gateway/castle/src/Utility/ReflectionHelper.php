@@ -106,6 +106,10 @@ class ReflectionHelper
         $classProperty = $reflectionClass->getProperty($property);
         $classProperty->setAccessible(true);
 
-        $classProperty->setValue($value);
+        if ($classProperty->isStatic()) {
+            $classProperty->setValue($value);
+        } else {
+            $classProperty->setValue($class, $value);
+        }
     }
 }
