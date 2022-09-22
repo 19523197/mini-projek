@@ -1,6 +1,6 @@
 <?php
 
-require_once __DIR__.'/../vendor/autoload.php';
+require_once __DIR__ . '/../vendor/autoload.php';
 
 (new Laravel\Lumen\Bootstrap\LoadEnvironmentVariables(
     dirname(__DIR__)
@@ -60,6 +60,8 @@ $app->singleton(
 */
 
 $app->configure('app');
+$app->configure('jwt');
+$app->configure('auth');
 
 /*
 |--------------------------------------------------------------------------
@@ -75,6 +77,10 @@ $app->configure('app');
 //$app->middleware([
 //    App\Http\Middleware\Localization::class,
 //]);
+
+$app->routeMiddleware([
+    'auth' => App\Http\Middleware\Authenticate::class,
+]);
 
 $app->routeMiddleware([
     'header' => \App\Http\Middleware\HeaderMiddleware::class,
@@ -95,10 +101,11 @@ $app->register(UIIGateway\Castle\ServiceProvider::class);
 $app->register(UIIGateway\Foundation\UIIGatewayServiceProvider::class);
 
 $app->register(App\Providers\AppServiceProvider::class);
-// $app->register(App\Providers\AuthServiceProvider::class);
+$app->register(App\Providers\AuthServiceProvider::class);
 // $app->register(App\Providers\EventServiceProvider::class);
 $app->register(App\Providers\RepositoryServiceProvider::class);
 $app->register(Flipbox\LumenGenerator\LumenGeneratorServiceProvider::class);
+$app->register(Tymon\JWTAuth\Providers\LumenServiceProvider::class);
 
 /*
 |--------------------------------------------------------------------------
@@ -114,7 +121,7 @@ $app->register(Flipbox\LumenGenerator\LumenGeneratorServiceProvider::class);
 $app->router->group([
     'namespace' => 'App\Http\Controllers',
 ], function ($router) {
-    require __DIR__.'/../routes/web.php';
+    require __DIR__ . '/../routes/web.php';
 });
 
 return $app;

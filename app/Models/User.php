@@ -22,6 +22,10 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
         'name', 'email',
     ];
 
+    const CREATED_AT = 'tgl_input';
+
+    const UPDATED_AT = 'tgl_update';
+
     /**
      * The attributes excluded from the model's JSON form.
      *
@@ -30,4 +34,24 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
     protected $hidden = [
         'password',
     ];
+
+    /**
+     * Get the identifier that will be stored in the subject claim of the JWT.
+     *
+     * @return mixed
+     */
+    public function getJWTIdentifier()
+    {
+        return $this->getKey();
+    }
+
+    /**
+     * Return a key value array, containing any custom claims to be added to the JWT.
+     *
+     * @return array
+     */
+    public function getJWTCustomClaims()
+    {
+        return [];
+    }
 }

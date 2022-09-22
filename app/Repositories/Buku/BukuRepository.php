@@ -3,6 +3,7 @@
 namespace App\Repositories\Buku;
 
 use App\DomainModel\Buku\BukuDomainModel;
+use App\Models\Books;
 use App\Models\ContohModel;
 use App\ValueObject\Buku\BukuValueObject;
 use Exception;
@@ -20,7 +21,7 @@ class BukuRepository extends BaseRepository
      */
     public function all()
     {
-        $results = ContohModel::all();
+        $results = Books::all();
 
         /**
          * If return data is collection (more than 1) use mapToDomainModel

@@ -50,6 +50,16 @@ $router->group(['prefix' => '/public/api/v1', 'middleware' => ['header']], funct
         $router->put('/{id}', 'BukuController@update');
         $router->delete('/{id}', 'BukuController@destroy');
     });
+
+    // Routes for  Validation
+    $router->group([ 'prefix' => '/validation' , 'namespace' => 'Validation' ], function () use ($router) { 
+        $router->get('/', 'ValidationController@index');
+        $router->get('/{uuid}', 'ValidationController@show');
+        $router->post('/', 'ValidationController@create');
+        $router->put('/{uuid}', 'ValidationController@update');
+        $router->delete('/{uuid}', 'ValidationController@destroy');
+    }); 
+
 }); // END_OF_PUBLIC_API_LINE (DONT DELETE THIS)
 
 /*
