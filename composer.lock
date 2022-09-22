@@ -230,7 +230,7 @@
                 "illuminate/support": "^8.0",
                 "laminas/laminas-code": "^3.4|^4.0",
                 "nikic/php-parser": "^4.10",
-                "php": "^7.3|^8.0"
+                "php": "^7.3|~8.0.0"
             },
             "require-dev": {
                 "doctrine/dbal": "^2.9|^3.0",
