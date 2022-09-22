@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1dd27cb4cd5378ef7808aa907019dc8c",
+    "content-hash": "835c152bb59ff02c434da0eda4c3ce3d",
     "packages": [
         {
             "name": "awobaz/compoships",
@@ -118,16 +118,16 @@
         },
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.235.12",
+            "version": "3.235.13",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "e0ebecfb0284dc44dc99a172cd9c68c40739904c"
+                "reference": "a3a5711c00673d18b571199858ffee95296c5f0d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/e0ebecfb0284dc44dc99a172cd9c68c40739904c",
-                "reference": "e0ebecfb0284dc44dc99a172cd9c68c40739904c",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/a3a5711c00673d18b571199858ffee95296c5f0d",
+                "reference": "a3a5711c00673d18b571199858ffee95296c5f0d",
                 "shasum": ""
             },
             "require": {
@@ -206,9 +206,9 @@
             "support": {
                 "forum": "https://forums.aws.amazon.com/forum.jspa?forumID=80",
                 "issues": "https://github.com/aws/aws-sdk-php/issues",
-                "source": "https://github.com/aws/aws-sdk-php/tree/3.235.12"
+                "source": "https://github.com/aws/aws-sdk-php/tree/3.235.13"
             },
-            "time": "2022-09-20T18:18:07+00:00"
+            "time": "2022-09-21T19:19:51+00:00"
         },
         {
             "name": "bensampo/laravel-enum",
@@ -230,7 +230,7 @@
                 "illuminate/support": "^8.0",
                 "laminas/laminas-code": "^3.4|^4.0",
                 "nikic/php-parser": "^4.10",
-                "php": "^7.3|~8.0.0"
+                "php": "^7.3|^8.0"
             },
             "require-dev": {
                 "doctrine/dbal": "^2.9|^3.0",
@@ -10840,7 +10840,7 @@
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
-        "php": "^8.0"
+        "php": "^8.0.0"
     },
     "platform-dev": [],
     "plugin-api-version": "2.2.0"

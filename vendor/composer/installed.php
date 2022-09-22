@@ -5,7 +5,7 @@
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => 'f0fa8ae4dc58a0f14a03f86e40abb44bf531df4a',
+        'reference' => '7466bea5d2e66fdb51fbff4a5426f31a6c70d192',
         'name' => 'laravel/lumen',
         'dev' => true,
     ),
@@ -29,12 +29,12 @@
             'dev_requirement' => false,
         ),
         'aws/aws-sdk-php' => array(
-            'pretty_version' => '3.235.12',
-            'version' => '3.235.12.0',
+            'pretty_version' => '3.235.13',
+            'version' => '3.235.13.0',
             'type' => 'library',
             'install_path' => __DIR__ . '/../aws/aws-sdk-php',
             'aliases' => array(),
-            'reference' => 'e0ebecfb0284dc44dc99a172cd9c68c40739904c',
+            'reference' => 'a3a5711c00673d18b571199858ffee95296c5f0d',
             'dev_requirement' => false,
         ),
         'barryvdh/laravel-ide-helper' => array(
@@ -547,7 +547,7 @@
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => 'f0fa8ae4dc58a0f14a03f86e40abb44bf531df4a',
+            'reference' => '7466bea5d2e66fdb51fbff4a5426f31a6c70d192',
             'dev_requirement' => false,
         ),
         'laravel/lumen-framework' => array(
